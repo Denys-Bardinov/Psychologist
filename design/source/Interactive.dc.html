@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Інтерактивні елементи</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&amp;family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.ia *{box-sizing:border-box}
+.ia h2,.ia h3,.ia p{margin:0}
+.lbl{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#4B3A7A}
+.h2{font-family:'Lora',Georgia,serif;font-weight:500;font-size:26px;line-height:1.2}
+.muted{color:#50466A;font-size:15px}
+.cell{display:flex;flex-direction:column;gap:12px}
+.frame{border:1.5px solid #B9B2CC;border-radius:28px;overflow:hidden;background:#FCFAFF;position:relative}
+.dim{position:absolute;inset:0;background:rgba(46,37,66,0.55)}
+.btn{min-height:48px;padding:10px 24px;border-radius:999px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;justify-content:center;text-align:center;border:1.5px solid #4B3A7A;font-family:inherit;color:#2E2542;background:#FBF1B8}
+.btn.alt{background:#D9CFF2}
+.btn.line{background:transparent;color:#4B3A7A}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.menurow{min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E2DBF0;font-weight:700;font-size:19px}
+.round{width:48px;height:48px;border-radius:50%;border:1.5px solid #4B3A7A;background:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;font-size:20px;color:#4B3A7A;flex:none}
+.card{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.cap{font-size:13px;color:#50466A}
+</style>
+</helmet>
+<div class="ia" style="width: 1200px; height: 2750px; padding: 64px; background: #EFE9FB; color: #2E2542; font-family: 'Nunito', system-ui, sans-serif; line-height: 1.5; display: flex; flex-direction: column; gap: 48px">
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p class="lbl">Інтерактивні елементи</p>
+<h2 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 44px; line-height: 1.15">Меню, мова, модальні вікна, чат і cookie</h2>
+<p class="muted" style="font-size: 17px; max-width: 780px">Ключові стани, які потрібні розробнику. Анімації короткі (150–250 мс) і вимикаються для користувачів із налаштуванням «зменшити рух». Усі вікна закриваються клавішею Esc та мають видиму кнопку закриття.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 32px; align-items: start">
+
+<div class="cell">
+<p class="lbl">1 · Мобільне меню</p>
+<div class="frame" style="width: 375px; height: 640px; padding: 0">
+<div style="height: 64px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; background: #FFFFFF; border-bottom: 1px solid #E2DBF0"><span style="font-family: 'Lora', Georgia, serif; font-size: 19px; font-weight: 600">[Ім'я Прізвище]</span><span class="round" aria-label="Закрити меню"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg></span></div>
+<div style="padding: 8px 20px 20px; display: flex; flex-direction: column; background: #FCFAFF">
+<div class="menurow"><span>Про мене</span><span aria-hidden="true">→</span></div>
+<div class="menurow"><span>Послуги</span><span aria-hidden="true">→</span></div>
+<div class="menurow"><span>Портфоліо</span><span aria-hidden="true">→</span></div>
+<div class="menurow"><span>Відгуки</span><span aria-hidden="true">→</span></div>
+<div class="menurow"><span>Питання</span><span aria-hidden="true">→</span></div>
+<div class="menurow"><span>Контакти</span><span aria-hidden="true">→</span></div>
+<div class="row" style="margin-top: 20px"><span class="btn alt" style="flex: 1">Українська ▾</span></div>
+<span class="btn" style="margin-top: 12px; width: 100%">Записатися на сесію</span>
+<div class="row" style="margin-top: 16px; justify-content: center"><span class="btn alt" style="width: 48px; padding: 0">IG</span><span class="btn alt" style="width: 48px; padding: 0">MS</span></div>
+</div>
+</div>
+<p class="cap">Відкривається на весь екран. Перехід по пункту закриває меню й прокручує до розділу. Фокус залишається всередині меню.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div class="cell">
+<p class="lbl">2 · Вибір мови</p>
+<div class="row" style="align-items: flex-start; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="btn alt">UA ▾</span><p class="cap">Закрито</p></div>
+<div style="background: #FFFFFF; border: 1.5px solid #B9B2CC; border-radius: 20px; padding: 8px; width: 240px; box-shadow: 0 8px 24px rgba(46,37,66,0.15)">
+<div style="min-height: 48px; padding: 0 14px; border-radius: 12px; background: #EFE9FB; display: flex; align-items: center; justify-content: space-between; font-weight: 700"><span>Українська</span><span aria-hidden="true">✓</span></div>
+<div style="min-height: 48px; padding: 0 14px; display: flex; align-items: center; font-weight: 600">Русский</div>
+<div style="min-height: 48px; padding: 0 14px; display: flex; align-items: center; font-weight: 600">English</div>
+<div style="min-height: 48px; padding: 0 14px; display: flex; align-items: center; font-weight: 600; color: #6E6486">[Інша мова]</div>
+</div>
+</div>
+<p class="cap">Назви мов написані рідними мовами. Вибір запам'ятовується, адреса сторінки змінюється (/uk, /ru, /en).</p>
+</div>
+
+<div class="cell">
+<p class="lbl">3 · Чат: кнопка та нижня панель</p>
+<div class="row" style="align-items: flex-end; gap: 24px">
+<div class="frame" style="width: 200px; height: 300px"><span style="position: absolute; right: 14px; bottom: 14px; width: 56px; height: 56px; border-radius: 50%; background: #D9CFF2; border: 2px solid #4B3A7A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.600 7.100L4 21l1.900-5.400A8 8 0 1 1 21 12z"></path></svg></span></div>
+<div class="frame" style="width: 200px; height: 300px"><div class="dim"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 20px 20px 0 0; padding: 12px 14px 16px; display: flex; flex-direction: column; gap: 8px"><span style="align-self: center; width: 36px; height: 5px; border-radius: 3px; background: #B9B2CC"></span><b style="font-size: 15px">Напишіть мені</b><span class="btn alt" style="min-height: 44px">Instagram</span><span class="btn alt" style="min-height: 44px">Messenger</span><span class="btn line" style="min-height: 44px">Записатися</span></div></div>
+</div>
+<p class="cap">Кругла кнопка 56 px знизу праворуч над банером cookie. Панель закривається свайпом вниз, дотиком до фону або кнопкою закриття.</p>
+</div>
+</div>
+
+<div class="cell">
+<p class="lbl">4 · Портфоліо: модальне вікно (десктоп)</p>
+<div class="frame" style="width: 520px; height: 560px"><div class="dim"></div>
+<div style="position: absolute; left: 40px; right: 40px; top: 36px; background: #FFFFFF; border-radius: 28px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="cap">3 з 8</span><span class="round" style="width: 44px; height: 44px" aria-label="Закрити">✕</span></div>
+<div style="height: 220px; border-radius: 18px; background: #FFDCC7; display: flex; align-items: flex-end; padding: 14px; font-size: 14px">[Велике зображення]</div>
+<h3 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 22px">[Назва роботи]</h3>
+<p class="muted">[Опис роботи на 2–3 речення: контекст, мета та результат.]</p>
+<div style="display: flex; justify-content: space-between"><span class="btn line" style="min-height: 44px">← Назад</span><span class="btn line" style="min-height: 44px">Далі →</span></div>
+</div>
+</div>
+<p class="cap">Центроване вікно з затемненим фоном. Стрілки на клавіатурі гортають роботи, Esc закриває.</p>
+</div>
+
+<div class="cell">
+<p class="lbl">5 · Портфоліо: на весь екран (мобільний)</p>
+<div class="frame" style="width: 375px; height: 560px; background: #FFFFFF; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="cap">3 з 8</span><span class="round" aria-label="Закрити">✕</span></div>
+<div style="height: 240px; border-radius: 18px; background: #FFDCC7; display: flex; align-items: flex-end; padding: 14px; font-size: 14px">[Велике зображення]</div>
+<h3 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 22px">[Назва роботи]</h3>
+<p class="muted">[Опис роботи на 2–3 речення.]</p>
+<div style="display: flex; justify-content: space-between; margin-top: auto"><span class="btn line">← Назад</span><span class="btn line">Далі →</span></div>
+</div>
+<p class="cap">Зображення гортається свайпом, закрити можна свайпом вниз.</p>
+</div>
+
+<div class="cell">
+<p class="lbl">6 · Банер cookie (десктоп)</p>
+<div class="frame" style="width: 520px; height: 300px">
+<div style="position: absolute; left: 20px; bottom: 20px; width: 360px; background: #FFFFFF; border: 1.5px solid #4B3A7A; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 8px 24px rgba(46,37,66,0.15)"><b style="font-size: 17px">Ми використовуємо cookie</b><p class="muted" style="font-size: 14px">Вони допомагають сайту працювати й розуміти, що можна покращити. <a href="#" style="color: #4B3A7A; text-decoration: underline">Докладніше</a></p><div class="row"><span class="btn" style="min-height: 44px">Прийняти</span><span class="btn line" style="min-height: 44px">Налаштування</span></div></div>
+</div>
+<p class="cap">Плаваюча картка знизу ліворуч. Кнопки «Прийняти» та «Налаштування» рівнозначні за розміром.</p>
+</div>
+
+<div class="cell">
+<p class="lbl">7 · Банер cookie (мобільний)</p>
+<div class="frame" style="width: 375px; height: 300px">
+<div style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-top: 1.5px solid #4B3A7A; border-radius: 20px 20px 0 0; padding: 18px 16px 20px; display: flex; flex-direction: column; gap: 10px"><b style="font-size: 17px">Ми використовуємо cookie</b><p class="muted" style="font-size: 14px">Вони допомагають сайту працювати. <a href="#" style="color: #4B3A7A; text-decoration: underline">Докладніше</a></p><span class="btn">Прийняти</span><span class="btn line">Налаштування</span></div>
+</div>
+<p class="cap">Нижня панель на всю ширину. Кнопка чату підіймається над нею.</p>
+</div>
+
+<div class="cell">
+<p class="lbl">8 · Наведення й слайдер відгуків</p>
+<div class="row" style="align-items: stretch; gap: 16px">
+<div class="card" style="width: 240px; transform: translateY(-4px); box-shadow: 0 12px 28px rgba(46,37,66,0.18); border-color: #4B3A7A"><b style="font-size: 17px">Картка послуги</b><p class="muted" style="font-size: 14px">Наведення: підйом на 4 px, тінь, фіолетова рамка.</p></div>
+<div class="card" style="width: 240px; gap: 8px; padding: 10px"><div style="height: 90px; border-radius: 16px; background: #D9CFF2; display: flex; align-items: flex-end; padding: 10px; font-size: 13px">[Зображення]</div><b style="padding: 0 8px; font-size: 15px">Картка портфоліо</b><span class="cap" style="padding: 0 8px 8px">Наведення: зображення збільшується на 4%, з'являється значок «відкрити».</span></div>
+</div>
+<div class="card" style="background: #EFE9FB; align-items: center; text-align: center; gap: 14px">
+<p style="font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 18px">«[Текст відгуку клієнта.]»</p>
+<div class="row" style="justify-content: center; gap: 14px"><span class="round" style="outline: 4px solid #D9CFF2; outline-offset: 2px" aria-label="Попередній">←</span><span style="display: flex; gap: 8px"><i style="width: 10px; height: 10px; border-radius: 50%; background: #4B3A7A"></i><i style="width: 10px; height: 10px; border-radius: 50%; background: #B9B2CC"></i><i style="width: 10px; height: 10px; border-radius: 50%; background: #B9B2CC"></i></span><span class="round" aria-label="Наступний">→</span></div>
+<p class="cap">Слайдер: стрілка у фокусі показана з ореолом. Автоперемикання вимкнено, свайп на мобільному.</p>
+</div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":2750}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

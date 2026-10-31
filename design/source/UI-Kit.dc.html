@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>UI-кіт і стайлгайд</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&amp;family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.kit *{box-sizing:border-box}
+.kit h2,.kit h3,.kit p{margin:0}
+.sec{display:flex;flex-direction:column;gap:16px}
+.lbl{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#4B3A7A}
+.h2{font-family:'Lora',Georgia,serif;font-weight:500;font-size:28px;line-height:1.2}
+.muted{color:#50466A;font-size:15px}
+.sw{display:flex;flex-direction:column;gap:6px}
+.sw .c{height:84px;border-radius:16px;border:1px solid #E2DBF0;display:flex;align-items:flex-end;padding:10px;font-weight:700;font-size:14px}
+.sw b{font-size:15px}
+.sw span{font-size:13px;color:#50466A;line-height:1.35}
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.panel{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:24px;padding:24px}
+.btn{min-height:48px;padding:10px 26px;border-radius:999px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;justify-content:center;text-align:center;border:1.5px solid #4B3A7A;font-family:inherit;color:#2E2542}
+.b-main{background:#FBF1B8}
+.b-alt{background:#D9CFF2}
+.b-line{background:transparent;color:#4B3A7A}
+.b-off{background:#E6E3EE;color:#6E6486;border-color:#B9B2CC}
+.cap{font-size:13px;color:#50466A;margin-top:6px}
+.in{min-height:52px;border:1.5px solid #8C82A6;border-radius:16px;background:#FFFFFF;padding:12px 16px;font:inherit;font-size:16px;color:#2E2542;width:100%}
+.in::placeholder{color:#6E6486}
+.tile{width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #E2DBF0}
+th{font-size:13px;color:#4B3A7A}
+.ok{font-weight:700;color:#2E2542}
+</style>
+</helmet>
+<div class="kit" style="width: 1200px; height: 2300px; padding: 64px; background: #FCFAFF; color: #2E2542; font-family: 'Nunito', system-ui, sans-serif; line-height: 1.5; display: flex; flex-direction: column; gap: 44px">
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p class="lbl">UI-кіт і стайлгайд</p>
+<h2 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 48px; line-height: 1.1">Лаванда й лимон</h2>
+<p class="muted" style="font-size: 17px; max-width: 760px">Усі кольори, шрифти, відступи та компоненти сайту. Пастелі лише для фонів і кнопок, а текст завжди темно-фіолетовий.</p>
+</div>
+
+<div class="sec">
+<h3 class="h2">Кольори</h3>
+<div class="g5">
+<div class="sw"><div class="c" style="background: #2E2542; color: #F2EEFB">Aa</div><b>Фіолетові чорнила</b><span>#2E2542 · основний текст, футер</span></div>
+<div class="sw"><div class="c" style="background: #4B3A7A; color: #FFFFFF">Aa</div><b>Фіолет</b><span>#4B3A7A · посилання, рамки, фокус</span></div>
+<div class="sw"><div class="c" style="background: #D9CFF2">Aa</div><b>Лаванда</b><span>#D9CFF2 · кнопки, плитки</span></div>
+<div class="sw"><div class="c" style="background: #FBF1B8">Aa</div><b>Лимонний крем</b><span>#FBF1B8 · головна кнопка, акценти</span></div>
+<div class="sw"><div class="c" style="background: #FFDCC7">Aa</div><b>Абрикос</b><span>#FFDCC7 · плитки, фото-заглушки</span></div>
+<div class="sw"><div class="c" style="background: #FCFAFF">Aa</div><b>Серпанок</b><span>#FCFAFF · фон сторінки</span></div>
+<div class="sw"><div class="c" style="background: #EFE9FB">Aa</div><b>Світла лаванда</b><span>#EFE9FB · фон секцій</span></div>
+<div class="sw"><div class="c" style="background: #50466A; color: #FFFFFF">Aa</div><b>Другорядний текст</b><span>#50466A · описи, підписи</span></div>
+<div class="sw"><div class="c" style="background: #8C82A6; color: #2E2542">Aa</div><b>Рамки полів</b><span>#8C82A6 · рамки, неактивні елементи</span></div>
+<div class="sw"><div class="c" style="background: #B3261E; color: #FFFFFF">Aa</div><b>Помилка</b><span>#B3261E · лише з іконкою й текстом</span></div>
+</div>
+</div>
+
+<div class="sec">
+<h3 class="h2">Перевірка контрасту (WCAG 2.1 AA)</h3>
+<div class="panel" style="padding: 12px 20px">
+<table>
+<tr><th>Пара кольорів</th><th>Контраст (орієнтовно)</th><th>Вимога</th><th>Результат</th></tr>
+<tr><td>#2E2542 на #FCFAFF (текст)</td><td>13.8 : 1</td><td>4.5 : 1</td><td class="ok">Проходить</td></tr>
+<tr><td>#50466A на #FCFAFF (другорядний текст)</td><td>8.3 : 1</td><td>4.5 : 1</td><td class="ok">Проходить</td></tr>
+<tr><td>#4B3A7A на #FCFAFF (посилання)</td><td>9.3 : 1</td><td>4.5 : 1</td><td class="ok">Проходить</td></tr>
+<tr><td>#2E2542 на #D9CFF2 / #FBF1B8 / #FFDCC7 (кнопки)</td><td>9.7 / 12.6 / 11.1 : 1</td><td>4.5 : 1</td><td class="ok">Проходить</td></tr>
+<tr><td>#6E6486 на #FCFAFF (підказки, плейсхолдер)</td><td>5.3 : 1</td><td>4.5 : 1</td><td class="ok">Проходить</td></tr>
+<tr><td>#8C82A6 на білому (рамка поля)</td><td>3.6 : 1</td><td>3 : 1</td><td class="ok">Проходить</td></tr>
+<tr><td>#B3261E на білому (текст помилки)</td><td>6.6 : 1</td><td>4.5 : 1</td><td class="ok">Проходить</td></tr>
+<tr><td>#F2EEFB на #2E2542 (футер)</td><td>12.3 : 1</td><td>4.5 : 1</td><td class="ok">Проходить</td></tr>
+</table>
+</div>
+<p class="muted">Значення розраховано вручну за формулою WCAG. Перед передачею в розробку їх варто перевірити інструментом (наприклад, у Figma-плагіні або WebAIM Contrast Checker).</p>
+</div>
+
+<div class="sec">
+<h3 class="h2">Типографіка</h3>
+<div class="panel" style="display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="font-family: 'Lora', Georgia, serif; font-size: 56px; line-height: 1.1">Заголовок H1</p>
+<p style="font-family: 'Lora', Georgia, serif; font-size: 40px; line-height: 1.2">Заголовок H2</p>
+<p style="font-family: 'Lora', Georgia, serif; font-size: 21px; line-height: 1.3">Заголовок H3, назва картки</p>
+<p style="font-size: 18px">Основний текст 18 px. Приклад довшого речення для перевірки читабельності кирилиці.</p>
+<p style="font-size: 14px; color: #50466A">Дрібний текст 14 px · підписи та підказки</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px">
+<p><b>Заголовки:</b> Lora 500/600, курсив для акцентного слова</p>
+<p><b>Текст:</b> Nunito 400/500/600/700</p>
+<p><b>Кирилиця:</b> обидва шрифти підтримують українську</p>
+<p><b>Шкала (десктоп / планшет / мобільний):</b> H1 56 / 46 / 36, H2 40 / 36 / 30, H3 21, текст 18 / 17 / 17, дрібний 14</p>
+<p><b>Інтервал:</b> 1.6 для тексту, 1.2 для заголовків</p>
+</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+<div class="sec">
+<h3 class="h2">Відступи й радіуси</h3>
+<div class="panel" style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 4px; height: 14px; background: #4B3A7A"></span><span class="muted">4 · 8 · 12 · 16 · 24 · 32 · 48 · 72 · 104 px (базова сітка 4)</span></div>
+<div style="display: flex; align-items: flex-end; gap: 8px"><span style="width: 4px; height: 4px; background: #8C82A6"></span><span style="width: 8px; height: 8px; background: #8C82A6"></span><span style="width: 12px; height: 12px; background: #8C82A6"></span><span style="width: 16px; height: 16px; background: #8C82A6"></span><span style="width: 24px; height: 24px; background: #8C82A6"></span><span style="width: 32px; height: 32px; background: #8C82A6"></span><span style="width: 48px; height: 48px; background: #8C82A6"></span><span style="width: 72px; height: 72px; background: #8C82A6"></span></div>
+<p class="muted">Відступи секцій: мобільний 56, планшет 80, десктоп 104 px. Бічні поля: 16 / 40 / 120 px. Максимальна ширина контенту 1200 px.</p>
+<div style="display: flex; gap: 12px; align-items: center"><span style="width: 56px; height: 56px; border-radius: 12px; background: #D9CFF2"></span><span style="width: 56px; height: 56px; border-radius: 16px; background: #D9CFF2"></span><span style="width: 56px; height: 56px; border-radius: 28px; background: #D9CFF2"></span><span style="width: 56px; height: 56px; border-radius: 999px; background: #D9CFF2"></span><span class="muted">12 · 16 · 28 · 999</span></div>
+</div>
+</div>
+<div class="sec">
+<h3 class="h2">Іконки й соцмережі</h3>
+<div class="panel" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<span class="tile" style="background: #D9CFF2"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"></rect><path d="M3 10h18M8 2v4M16 2v4"></path></svg></span>
+<span class="tile" style="background: #FBF1B8"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.600-7 8-7s8 3 8 7"></path></svg></span>
+<span class="tile" style="background: #FFDCC7"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5-8-11a4.500 4.500 0 0 1 8-2.800A4.500 4.500 0 0 1 20 10c0 6-8 11-8 11z"></path></svg></span>
+<span class="tile" style="background: #D9CFF2"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
+<span class="tile" style="background: #FBF1B8"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+</div>
+<p class="muted">Лінійні іконки 1.75 px з округленими кінцями на плитках 56 px (радіус 18). Експорт у SVG.</p>
+<div style="display: flex; gap: 12px"><span style="width: 48px; height: 48px; border-radius: 50%; background: #D9CFF2; display: flex; align-items: center; justify-content: center; font-weight: 700">IG</span><span style="width: 48px; height: 48px; border-radius: 50%; background: #D9CFF2; display: flex; align-items: center; justify-content: center; font-weight: 700">TG</span><span style="width: 48px; height: 48px; border-radius: 50%; background: #D9CFF2; display: flex; align-items: center; justify-content: center; font-weight: 700">FB</span><span style="width: 48px; height: 48px; border-radius: 50%; background: #D9CFF2; display: flex; align-items: center; justify-content: center; font-weight: 700">LI</span></div>
+<p class="muted">Іконки соцмереж: кола 48 px. Тут букви-заглушки, фірмові SVG додам на етапі експорту ресурсів.</p>
+</div>
+</div>
+</div>
+
+<div class="sec">
+<h3 class="h2">Кнопки</h3>
+<div class="panel">
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px">
+<div><span class="btn b-main">Головна</span><p class="cap">Звичайна</p></div>
+<div><span class="btn b-main" style="background: #F5E58E; transform: translateY(-1px); box-shadow: 0 4px 0 #4B3A7A">Головна</span><p class="cap">Наведення: темніший лимон, підйом на 1 px</p></div>
+<div><span class="btn b-main" style="background: #EBD66A; transform: translateY(2px)">Головна</span><p class="cap">Натискання: ще темніший, зсув на 2 px</p></div>
+<div><span class="btn b-main" style="outline: 4px solid #D9CFF2; outline-offset: 2px">Головна</span><p class="cap">Фокус: ореол 4 px, завжди видимий</p></div>
+<div><span class="btn b-off">Головна</span><p class="cap">Неактивна</p></div>
+</div>
+<div style="display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; align-items: center"><span class="btn b-alt">Другорядна</span><span class="btn b-line">Контурна</span><span class="muted">Мінімальна висота кнопок 48 px (великі 52–56), відстань між ними 12 px</span></div>
+</div>
+</div>
+
+<div class="sec">
+<h3 class="h2">Поля та картки</h3>
+<div class="g4">
+<div><input class="in" type="text" placeholder="Звичайне" aria-label="Звичайне поле"><p class="cap">Звичайне</p></div>
+<div><input class="in" type="text" value="Фокус" aria-label="Поле у фокусі" style="border: 2.5px solid #4B3A7A; outline: 4px solid #D9CFF2"><p class="cap">Фокус</p></div>
+<div><input class="in" type="text" value="Помилка" aria-label="Поле з помилкою" style="border: 2.5px solid #B3261E"><p class="cap">Помилка (+ іконка й текст)</p></div>
+<div><input class="in" type="text" value="Неактивне" aria-label="Неактивне поле" disabled style="background: #F3F1F8; color: #6E6486; border-color: #B9B2CC"><p class="cap">Неактивне</p></div>
+</div>
+<div class="g3" style="margin-top: 8px">
+<div class="panel" style="border-radius: 28px; display: flex; flex-direction: column; gap: 10px"><span class="tile" style="background: #D9CFF2"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.600-7 8-7s8 3 8 7"></path></svg></span><p style="font-family: 'Lora', Georgia, serif; font-size: 21px">Картка послуги</p><p class="muted">Білий фон, рамка 1 px, радіус 28, відступ 28.</p></div>
+<div class="panel" style="border-radius: 24px; padding: 10px; display: flex; flex-direction: column; gap: 10px"><div style="height: 100px; border-radius: 16px; background: #FFDCC7; padding: 12px; display: flex; align-items: flex-end; font-size: 13px">[Зображення]</div><p style="font-weight: 700; padding: 0 8px 8px">Картка портфоліо<br><span class="muted" style="font-weight: 500; font-size: 13px">Радіус 24, зображення 16</span></p></div>
+<div class="panel" style="background: #EFE9FB; border-radius: 28px; display: flex; flex-direction: column; gap: 10px"><p style="font-family: 'Lora', Georgia, serif; font-size: 18px; font-style: italic; line-height: 1.5">«[Текст відгуку клієнта.]»</p><p class="muted"><b>[Ім'я], [місто]</b><br>Картка відгуку на світло-лавандовому фоні</p></div>
+</div>
+</div>
+
+<div class="sec">
+<h3 class="h2">Доступність: правила</h3>
+<div class="panel" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; font-size: 15px">
+<p>• Цілі натискання не менше 48 px (мінімум за вимогою 44 px).</p>
+<p>• Видимий фокус на кожному інтерактивному елементі.</p>
+<p>• Інформація ніколи не передається лише кольором.</p>
+<p>• Мінімальний розмір тексту 14 px, основний 17–18 px.</p>
+<p>• Усі іконки без тексту мають доступну назву (aria-label).</p>
+<p>• Українська, російська й англійська версії: мова сторінки вказана в коді.</p>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":2300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
