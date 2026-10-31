@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Макет сайту психолога</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&amp;family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.site{container-type:inline-size;width:100%;background:#FCFAFF;color:#2E2542;font-family:'Nunito',system-ui,sans-serif;font-size:17px;line-height:1.6}
+.site *{box-sizing:border-box}
+.site h1,.site h2,.site h3,.site p{margin:0}
+.site h1,.site h2,.site h3{font-family:'Lora',Georgia,serif;font-weight:500;line-height:1.2}
+.site h1{font-size:36px}
+.site h2{font-size:30px}
+.site h3{font-size:21px}
+.site a{color:#4B3A7A;text-decoration:none}
+.hdr{position:sticky;top:0;z-index:5;height:64px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#FFFFFF;border-bottom:1px solid #E2DBF0}
+.logo{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:600;white-space:nowrap}
+.nav{display:none;gap:24px;font-weight:600;font-size:16px}
+.nav a{color:#2E2542}
+.hr{display:flex;align-items:center;gap:8px}
+.lang{min-height:48px;min-width:56px;padding:0 14px;border-radius:999px;background:#EFE9FB;border:0;font:inherit;font-weight:700;color:#2E2542;display:inline-flex;align-items:center;justify-content:center}
+.menu{width:48px;height:48px;border-radius:50%;border:1.5px solid #8C82A6;background:#FFFFFF;display:inline-flex;align-items:center;justify-content:center}
+.btn{min-height:48px;padding:10px 26px;border-radius:999px;font-weight:700;font-size:16px;line-height:1.25;display:inline-flex;align-items:center;justify-content:center;text-align:center;border:1.5px solid #4B3A7A;font-family:inherit}
+.btn.main{background:#FBF1B8;color:#2E2542;border-color:#4B3A7A}
+.btn.alt{background:#D9CFF2;color:#2E2542}
+.btn.line{background:transparent;color:#4B3A7A}
+.cta{display:none}
+.pad{padding:56px 16px}
+.wrap{max-width:1200px;margin:0 auto}
+.eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#4B3A7A}
+.stack{display:flex;flex-direction:column;gap:20px}
+.two{display:grid;gap:32px;grid-template-columns:minmax(0,1fr);align-items:center}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:8px 16px;border-radius:999px;background:#FBF1B8;font-weight:600;font-size:15px}
+.muted{color:#50466A}
+.arch{border-radius:200px 200px 28px 28px;background:#D9CFF2;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:24px;color:#2E2542;font-size:15px}
+.photo{border-radius:28px;background:#FFDCC7;display:flex;align-items:flex-end;padding:24px;color:#2E2542;font-size:15px}
+.grid3{display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+.grid4{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.tile{width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;flex:none}
+.price{font-family:'Lora',Georgia,serif;font-size:24px;font-weight:600}
+.work{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:24px;padding:10px;display:flex;flex-direction:column;gap:10px}
+.work .img{border-radius:16px;height:120px;display:flex;align-items:flex-end;padding:12px;font-size:13px;color:#2E2542}
+.work div.t{padding:0 8px 8px;font-weight:700;font-size:15px;line-height:1.3}
+.work div.t span{display:block;font-weight:500;font-size:13px;color:#50466A}
+.quote{font-family:'Lora',Georgia,serif;font-size:22px;line-height:1.45;font-style:italic}
+.dots{display:flex;gap:8px;justify-content:center}
+.dots i{width:10px;height:10px;border-radius:50%;background:#B9B2CC}
+.dots i.on{background:#4B3A7A}
+.arrow{width:48px;height:48px;border-radius:50%;border:1.5px solid #4B3A7A;background:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;font-size:20px;color:#4B3A7A}
+details{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:20px;padding:0 20px}
+summary{list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;color:#4B3A7A;flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 18px;color:#50466A}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-weight:700;font-size:15px}
+.in{min-height:52px;border:1.5px solid #8C82A6;border-radius:16px;background:#FFFFFF;padding:12px 16px;font:inherit;font-size:16px;color:#2E2542;width:100%}
+.in::placeholder{color:#6E6486}
+.hint{font-size:14px;color:#50466A}
+.seg{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.seg button{min-height:48px;padding:0 12px;border-radius:999px;border:1.5px solid #8C82A6;background:#FFFFFF;font:inherit;font-weight:700;font-size:15px;color:#2E2542;white-space:nowrap}
+.seg button.on{background:#D9CFF2;border-color:#4B3A7A}
+.fgrid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.check span.box{width:24px;height:24px;border:1.5px solid #4B3A7A;border-radius:7px;flex:none;background:#FFFFFF;margin-top:1px}
+.msgbtn{min-height:64px;border-radius:24px;background:#FFFFFF;border:1.5px solid #4B3A7A;padding:0 20px;display:flex;align-items:center;gap:16px;font-weight:700;font-size:17px;color:#2E2542}
+.msgbtn .ic{width:40px;height:40px;border-radius:50%;background:#EFE9FB;display:flex;align-items:center;justify-content:center;flex:none}
+.msgbtn .go{margin-left:auto;font-size:20px}
+.crow{display:flex;gap:14px;align-items:flex-start}
+.map{border-radius:28px;background:#E4DEF3;min-height:260px;display:flex;align-items:center;justify-content:center;text-align:center;color:#50466A;font-size:15px;padding:16px;border:1px solid #D2C9EA}
+.ft{background:#2E2542;color:#F2EEFB;padding:40px 16px;display:flex;flex-direction:column;gap:20px}
+.ft a{color:#F2EEFB;text-decoration:underline}
+.soc{display:flex;gap:12px}
+.soc span{width:48px;height:48px;border-radius:50%;background:#D9CFF2;color:#2E2542;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+@container (min-width:700px){
+.site h1{font-size:46px}
+.site h2{font-size:36px}
+.hdr{height:76px;padding:0 40px}
+.cta{display:inline-flex}
+.pad{padding:80px 40px}
+.two{grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:48px}
+.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.work .img{height:140px}
+.ft{padding:40px;flex-direction:row;align-items:center;justify-content:space-between}
+}
+@container (min-width:1100px){
+.site{font-size:18px}
+.site h1{font-size:56px}
+.site h2{font-size:40px}
+.hdr{padding:0 120px}
+.nav{display:flex}
+.menu{display:none}
+.pad{padding:104px 120px}
+.grid3{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.work .img{height:180px}
+.ft{padding:48px 120px}
+}
+</style>
+</helmet>
+<div class="site">
+
+<header class="hdr">
+<div class="logo">[Ім'я Прізвище]</div>
+<nav class="nav" aria-label="Основна навігація"><a href="#about">Про мене</a><a href="#services">Послуги</a><a href="#portfolio">Портфоліо</a><a href="#reviews">Відгуки</a><a href="#faq">Питання</a><a href="#contacts">Контакти</a></nav>
+<div class="hr">
+<button class="lang" type="button" aria-label="Мова сайту: українська">UA ▾</button>
+<a class="btn main cta" href="#booking">Записатися</a>
+<button class="menu" type="button" aria-label="Відкрити меню"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</div>
+</header>
+
+<section class="pad" style="background: #EFE9FB">
+<div class="wrap two">
+<div class="stack">
+<p class="eyebrow">Психолог · [місто] · онлайн та офлайн</p>
+<h1>Зробіть вдих. <em>Ви в правильному місці.</em></h1>
+<p class="muted">Індивідуальні сесії для тих, хто втомився, розгубився або просто хоче бути почутим. Без осуду, у вашому темпі.</p>
+<div class="row"><a class="btn main" href="#booking">Записатися на сесію</a><a class="btn line" href="#about">Дізнатися більше</a></div>
+<div class="chips"><span class="chip">[N] років практики</span><span class="chip">Онлайн та офлайн</span><span class="chip">Конфіденційно</span></div>
+</div>
+<div class="arch" style="min-height: 380px">[Портретне фото психолога]</div>
+</div>
+</section>
+
+<section class="pad" id="about">
+<div class="wrap two">
+<div class="photo" style="min-height: 360px">[Фото]</div>
+<div class="stack">
+<p class="eyebrow">Про мене</p>
+<h2>Я допомагаю знайти опору</h2>
+<p class="muted">[Кілька речень про себе: хто ви, з якими запитами працюєте і чому обрали цю професію. Теплий, людяний тон без складних термінів.]</p>
+<p class="muted">[Ще кілька речень про підхід до роботи: як проходять сесії і чого очікувати клієнту.]</p>
+<div class="chips"><span class="chip" style="background: #D9CFF2">Освіта: [ВНЗ, спеціальність]</span><span class="chip" style="background: #FFDCC7">Підхід: [напрям терапії]</span><span class="chip">Сертифікати: [назви]</span></div>
+</div>
+</div>
+</section>
+
+<section class="pad" id="services" style="background: #EFE9FB">
+<div class="wrap stack" style="gap: 32px">
+<div class="stack" style="gap: 8px"><p class="eyebrow">Послуги</p><h2>Послуги та ціни</h2></div>
+<div class="grid3">
+<div class="card"><span class="tile" style="background: #D9CFF2"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></span><h3>Індивідуальна сесія</h3><p class="muted">[Короткий опис: для кого і з якими запитами.]</p><p class="price">[Ціна] грн <span style="font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 500; color: #50466A">/ [50] хв</span></p><a class="btn alt" href="#booking">Записатися</a></div>
+<div class="card"><span class="tile" style="background: #FBF1B8"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2 20c0-3.5 3-6 7-6s7 2.500 7 6M17 14c3 0 5 2 5 5"></path></svg></span><h3>Сесія для пар</h3><p class="muted">[Короткий опис: для кого і з якими запитами.]</p><p class="price">[Ціна] грн <span style="font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 500; color: #50466A">/ [80] хв</span></p><a class="btn alt" href="#booking">Записатися</a></div>
+<div class="card"><span class="tile" style="background: #FFDCC7"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="3"></rect><path d="M8 21h8M12 17v4"></path></svg></span><h3>Онлайн-консультація</h3><p class="muted">[Короткий опис: формат, платформа, як підключитися.]</p><p class="price">[Ціна] грн <span style="font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 500; color: #50466A">/ [50] хв</span></p><a class="btn alt" href="#booking">Записатися</a></div>
+</div>
+</div>
+</section>
+
+<section class="pad" id="portfolio">
+<div class="wrap stack" style="gap: 32px">
+<div class="stack" style="gap: 8px"><p class="eyebrow">Портфоліо</p><h2>Мої роботи</h2></div>
+<div class="grid4">
+<div class="work"><div class="img" style="background: #D9CFF2">[Зображення]</div><div class="t">[Назва роботи]<span>[Категорія]</span></div></div>
+<div class="work"><div class="img" style="background: #FBF1B8">[Зображення]</div><div class="t">[Назва роботи]<span>[Категорія]</span></div></div>
+<div class="work"><div class="img" style="background: #FFDCC7">[Зображення]</div><div class="t">[Назва роботи]<span>[Категорія]</span></div></div>
+<div class="work"><div class="img" style="background: #E4DEF3">[Зображення]</div><div class="t">[Назва роботи]<span>[Категорія]</span></div></div>
+</div>
+<div><a class="btn line" href="#portfolio">Дивитися всі роботи</a></div>
+</div>
+</section>
+
+<section class="pad" id="reviews" style="background: #EFE9FB">
+<div class="wrap stack" style="gap: 28px; align-items: center; text-align: center">
+<div class="stack" style="gap: 8px"><p class="eyebrow">Відгуки</p><h2>Що кажуть клієнти</h2></div>
+<div class="card" style="max-width: 800px; padding: 36px 28px; gap: 20px">
+<p class="quote">«[Текст відгуку клієнта. Кілька щирих речень про те, як змінилося життя після роботи з психологом.]»</p>
+<p style="font-weight: 700">[Ім'я], [місто]</p>
+</div>
+<div class="row" style="align-items: center; justify-content: center; gap: 16px"><button class="arrow" type="button" aria-label="Попередній відгук">←</button><div class="dots"><i class="on"></i><i></i><i></i></div><button class="arrow" type="button" aria-label="Наступний відгук">→</button></div>
+</div>
+</section>
+
+<section class="pad" id="faq">
+<div class="wrap stack" style="gap: 28px; max-width: 880px">
+<div class="stack" style="gap: 8px"><p class="eyebrow">Часті питання</p><h2>Відповіді на питання</h2></div>
+<details open><summary>Як проходить перша сесія?</summary><p>[Коротка відповідь на 2–3 речення: знайомство, обговорення запиту, домовленості про подальшу роботу.]</p></details>
+<details><summary>Скільки триває одна сесія?</summary><p>[Відповідь.]</p></details>
+<details><summary>Чи можна проводити сесії онлайн?</summary><p>[Відповідь.]</p></details>
+<details><summary>Чи конфіденційні наші розмови?</summary><p>[Відповідь.]</p></details>
+</div>
+</section>
+
+<section class="pad" id="booking" style="background: #EFE9FB">
+<div class="wrap two" style="align-items: start">
+<div class="stack">
+<p class="eyebrow">Запис</p>
+<h2>Запис на консультацію</h2>
+<p class="muted">Залиште заявку, і я зв'яжуся з вами протягом [X] годин, щоб узгодити зручний час.</p>
+<div class="photo" style="min-height: 180px; background: #FBF1B8">[Спокійне зображення або ілюстрація]</div>
+</div>
+<form class="card" style="padding: 28px; gap: 18px" onsubmit="return false">
+<div class="fld"><label for="f-name">Ім'я</label><input class="in" id="f-name" type="text" placeholder="Наприклад, Анна"></div>
+<div class="fld"><span style="font-weight: 700; font-size: 15px">Як з вами зв'язатися?</span>
+<div class="seg"><button class="on" type="button">Телефон</button><button type="button">Email</button><button type="button">Instagram</button><button type="button">Messenger</button></div></div>
+<div class="fld"><label for="f-contact">Ваш номер телефону</label><input class="in" id="f-contact" type="tel" placeholder="+380 ..."><span class="hint">Підпис і підказка змінюються залежно від вибору: email, @ім'я_користувача в Instagram або ім'я чи посилання в Messenger.</span></div>
+<div class="fgrid c2">
+<div class="fld"><label for="f-type">Тип сесії</label><select class="in" id="f-type"><option>Оберіть</option><option>Індивідуальна сесія</option><option>Сесія для пар</option><option>Онлайн-консультація</option></select></div>
+<div class="fld"><label for="f-time">Бажаний день і час</label><input class="in" id="f-time" type="text" placeholder="Наприклад, четвер, 18:00"></div>
+</div>
+<div class="fld"><label for="f-msg">Повідомлення (необов'язково)</label><textarea class="in" id="f-msg" rows="3" placeholder="Коротко про ваш запит"></textarea></div>
+<div class="check"><span class="box"></span><span>Я погоджуюся на обробку моїх персональних даних відповідно до <a href="#" style="text-decoration: underline">політики конфіденційності</a></span></div>
+<button class="btn main" type="button" style="width: 100%">Надіслати запит</button>
+</form>
+</div>
+</section>
+
+<section class="pad" style="background: #FBF1B8">
+<div class="wrap two">
+<div class="stack" style="gap: 10px">
+<p class="eyebrow">Швидше написати?</p>
+<h2>Напишіть мені в Instagram або Messenger</h2>
+<p class="muted">Зазвичай відповідаю протягом [X] годин.</p>
+</div>
+<div class="stack" style="gap: 14px">
+<a class="msgbtn" href="#"><span class="ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8"></circle></svg></span>Написати в Instagram<span class="go" aria-hidden="true">→</span></a>
+<a class="msgbtn" href="#"><span class="ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C7 3 3 6.600 3 11c0 2.400 1.200 4.500 3 5.900V21l3-1.700c.9.200 1.900.400 3 .400 5 0 9-3.600 9-8s-4-8-9-8z"></path><path d="M7.500 13l3-3.200 2 2 3-2.800"></path></svg></span>Написати в Messenger<span class="go" aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<section class="pad" id="contacts">
+<div class="wrap">
+<div class="stack">
+<p class="eyebrow">Контакти</p>
+<h2>Як зі мною зв'язатися</h2>
+<div class="crow"><span class="tile" style="background: #FBF1B8; width: 48px; height: 48px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg></span><p>[+380 XX XXX XX XX]</p></div>
+<div class="crow"><span class="tile" style="background: #FFDCC7; width: 48px; height: 48px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M3 7l9 6 9-6"></path></svg></span><p>[email@example.com]</p></div>
+<div class="crow"><span class="tile" style="background: #E4DEF3; width: 48px; height: 48px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><p>Пн–Пт, [10:00–19:00]</p></div>
+</div>
+</div>
+</section>
+
+<footer class="ft">
+<div class="stack" style="gap: 8px"><div class="logo" style="color: #F2EEFB">[Ім'я Прізвище]</div><p style="font-size: 15px">© [Рік] [Ім'я Прізвище]. Усі права захищено.</p></div>
+<div class="soc"><span>IG</span><span>TG</span><span>FB</span><span>LI</span></div>
+<p style="font-size: 15px"><a href="#">Політика конфіденційності</a> · <a href="#">Налаштування cookie</a></p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5600}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

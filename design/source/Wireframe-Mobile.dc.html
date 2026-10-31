@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Вайрфрейм: мобільна версія</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.wf{width:375px;box-sizing:border-box;background:#FCFAFF;color:#2E2542;font-family:'Nunito',system-ui,sans-serif;font-size:15px;line-height:1.4}
+.sec{padding:32px 16px;border-bottom:1px dashed #B9B2CC;display:flex;flex-direction:column;gap:16px;position:relative}
+.tag{font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6E6486}
+.ph{background:#E6E3EE;border:1.5px solid #B9B2CC;border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;color:#50466A;font-size:13px;padding:8px;box-sizing:border-box}
+.h{height:14px;border-radius:7px;background:#B9B2CC}
+.ln{height:10px;border-radius:5px;background:#D6D1E3}
+.btn{min-height:48px;border-radius:999px;background:#D9CFF2;border:1.5px solid #4B3A7A;display:flex;align-items:center;justify-content:center;font-weight:700;color:#2E2542;box-sizing:border-box;padding:0 16px;text-align:center}
+.card{border:1.5px solid #B9B2CC;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;background:#FFFFFF}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-weight:600;font-size:14px}
+.in{min-height:48px;border:1.5px solid #8C82A6;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;padding:0 12px;color:#6E6486;font-size:14px;box-sizing:border-box}
+.note{font-size:12px;color:#6E6486}
+</style>
+</helmet>
+<div class="wf">
+
+<div style="height: 64px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1.5px solid #B9B2CC; background: #FFFFFF">
+<div class="ph" style="width: 120px; height: 36px">Логотип / ім'я</div>
+<div style="display: flex; gap: 8px; align-items: center">
+<div class="ph" style="min-width: 56px; height: 48px; border-radius: 999px; padding: 0 12px; font-weight: 700" aria-label="Мова">UA ▾</div>
+<div class="ph" style="width: 48px; height: 48px" aria-label="Меню">Меню</div>
+</div>
+</div>
+<p class="note" style="margin: 0; padding: 6px 16px; background: #FBF1B8">Фіксована шапка. Меню відкривається на весь екран: Про мене, Послуги, Портфоліо, Відгуки, Питання, Контакти + кнопка запису. Кнопка мови (UA) відкриває список: Українська ✓, Русский, English та інші додані мови; рядки по 48 px, назви рідними мовами. За замовчуванням українська, вибір запам'ятовується. Тексти на 20–30% довші за англійські, тому кнопки й картки ростуть і переносяться, без фіксованої ширини підписів.</p>
+
+<div class="sec">
+<span class="tag">01 Головний екран</span>
+<div class="h" style="width: 90%; height: 22px"></div>
+<div class="h" style="width: 70%; height: 22px"></div>
+<div class="ln" style="width: 100%"></div><div class="ln" style="width: 85%"></div>
+<div class="btn">Записатися на сесію</div>
+<div class="ph" style="height: 240px; border-radius: 120px 120px 16px 16px">Портретне фото</div>
+</div>
+
+<div class="sec">
+<span class="tag">02 Про мене</span>
+<div class="ph" style="height: 220px">Фото</div>
+<div class="h" style="width: 60%; height: 18px"></div>
+<div class="ln" style="width: 100%"></div><div class="ln" style="width: 100%"></div><div class="ln" style="width: 90%"></div><div class="ln" style="width: 60%"></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<div class="ph" style="height: 36px; padding: 0 14px; border-radius: 999px">Освіта</div>
+<div class="ph" style="height: 36px; padding: 0 14px; border-radius: 999px">Досвід</div>
+<div class="ph" style="height: 36px; padding: 0 14px; border-radius: 999px">Підхід</div>
+</div>
+</div>
+
+<div class="sec">
+<span class="tag">03 Послуги та ціни</span>
+<div class="card"><div class="h" style="width: 55%"></div><div class="ln" style="width: 100%"></div><div class="ln" style="width: 80%"></div><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><strong>[Ціна] / [тривалість]</strong><span class="note">Індивідуально</span></div></div>
+<div class="card"><div class="h" style="width: 55%"></div><div class="ln" style="width: 100%"></div><div class="ln" style="width: 80%"></div><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><strong>[Ціна] / [тривалість]</strong><span class="note">Для пар</span></div></div>
+<div class="card"><div class="h" style="width: 55%"></div><div class="ln" style="width: 100%"></div><div class="ln" style="width: 80%"></div><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><strong>[Ціна] / [тривалість]</strong><span class="note">Онлайн</span></div></div>
+<div class="btn">Записатися на сесію</div>
+</div>
+
+<div class="sec">
+<span class="tag">04 Портфоліо</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div class="card" style="padding: 8px"><div class="ph" style="height: 110px">Зображення</div><div class="h" style="width: 80%"></div><div class="ln" style="width: 60%"></div></div>
+<div class="card" style="padding: 8px"><div class="ph" style="height: 110px">Зображення</div><div class="h" style="width: 80%"></div><div class="ln" style="width: 60%"></div></div>
+<div class="card" style="padding: 8px"><div class="ph" style="height: 110px">Зображення</div><div class="h" style="width: 80%"></div><div class="ln" style="width: 60%"></div></div>
+<div class="card" style="padding: 8px"><div class="ph" style="height: 110px">Зображення</div><div class="h" style="width: 80%"></div><div class="ln" style="width: 60%"></div></div>
+</div>
+<p class="note" style="margin: 0">Натисніть картку: модальне вікно на весь екран із зображенням, описом і кнопкою закриття.</p>
+</div>
+
+<div class="sec">
+<span class="tag">05 Відгуки</span>
+<div class="card" style="padding: 24px"><div class="ln" style="width: 100%"></div><div class="ln" style="width: 100%"></div><div class="ln" style="width: 70%"></div><div class="h" style="width: 40%; margin-top: 8px"></div></div>
+<div style="display: flex; justify-content: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #4B3A7A"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #B9B2CC"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #B9B2CC"></span></div>
+<p class="note" style="margin: 0; text-align: center">Слайдер: свайп, крапки та кнопки-стрілки (цілі натискання 48 px)</p>
+</div>
+
+<div class="sec">
+<span class="tag">06 Часті питання</span>
+<div class="card" style="gap: 12px"><div style="display: flex; justify-content: space-between; align-items: center"><strong>Питання 1</strong><span>–</span></div><div class="ln" style="width: 100%"></div><div class="ln" style="width: 75%"></div></div>
+<div class="card"><div style="display: flex; justify-content: space-between; align-items: center"><strong>Питання 2</strong><span>+</span></div></div>
+<div class="card"><div style="display: flex; justify-content: space-between; align-items: center"><strong>Питання 3</strong><span>+</span></div></div>
+<div class="card"><div style="display: flex; justify-content: space-between; align-items: center"><strong>Питання 4</strong><span>+</span></div></div>
+</div>
+
+<div class="sec" style="background: #EFE9FB">
+<span class="tag">07 Форма запису</span>
+<div class="h" style="width: 70%; height: 20px"></div>
+<div class="fld"><label>Ім'я</label><div class="in">Ваше ім'я</div></div>
+<div class="fld"><label>Як з вами зв'язатися?</label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<div class="btn" style="min-height: 48px; background: #D9CFF2">Телефон ✓</div>
+<div class="btn" style="min-height: 48px; background: #FFFFFF; border-color: #8C82A6">Email</div>
+<div class="btn" style="min-height: 48px; background: #FFFFFF; border-color: #8C82A6">Instagram</div>
+<div class="btn" style="min-height: 48px; background: #FFFFFF; border-color: #8C82A6">Messenger</div>
+</div></div>
+<div class="fld"><label>Ваш номер телефону</label><div class="in">+[код країни] ...</div><span class="note">Підпис, підказка й клавіатура змінюються залежно від вибору: телефон (цифрова клавіатура), email (клавіатура для пошти), Instagram (@ім'я_користувача), Messenger (ім'я або посилання на профіль).</span></div>
+<div class="fld"><label>Тип сесії</label><div class="in" style="justify-content: space-between">Оберіть<span>▾</span></div></div>
+<div class="fld"><label>Бажаний день і час</label><div class="in">Дата й час</div></div>
+<div class="fld"><label>Повідомлення (необов'язково)</label><div class="in" style="height: 96px; align-items: flex-start; padding-top: 12px">Коротка примітка</div></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 24px; height: 24px; border: 1.5px solid #4B3A7A; border-radius: 6px; flex: none; background: #FFFFFF"></span><span style="font-size: 14px">Я погоджуюся на обробку моїх персональних даних (посилання на політику конфіденційності)</span></div>
+<div class="btn">Надіслати запит</div>
+<p class="note" style="margin: 0">Стани форми (дивіться далі): порожня, фокус, помилка, надсилання, успіх, збій.</p>
+</div>
+
+<div class="sec" style="background: #FBF1B8">
+<span class="tag">08 Напишіть мені (Instagram, Messenger)</span>
+<div class="h" style="width: 75%; height: 20px"></div>
+<div class="ln" style="width: 100%"></div><div class="ln" style="width: 70%"></div>
+<div class="btn" style="justify-content: flex-start; gap: 12px; padding: 0 16px; min-height: 56px; background: #FFFFFF; width: 100%"><span class="ph" style="width: 36px; height: 36px; border-radius: 50%; flex: none; padding: 0">IG</span><span style="flex: 1; text-align: left">Написати в Instagram</span><span aria-hidden="true">→</span></div>
+<div class="btn" style="justify-content: flex-start; gap: 12px; padding: 0 16px; min-height: 56px; background: #FFFFFF; width: 100%"><span class="ph" style="width: 36px; height: 36px; border-radius: 50%; flex: none; padding: 0">MS</span><span style="flex: 1; text-align: left">Написати в Messenger</span><span aria-hidden="true">→</span></div>
+<p class="note" style="margin: 0">Кнопки на всю ширину, висота 56 px, зручно натискати великим пальцем. На телефоні кожна відкриває встановлений застосунок (особисте повідомлення для [нікнейм]); якщо застосунку немає, відкривається веб-чат. Під кнопками: «Зазвичай відповідаю протягом [X] год».</p>
+<div class="card" style="gap: 8px">
+<span class="tag">Плаваюча кнопка (на всіх розділах)</span>
+<div style="display: flex; justify-content: flex-end"><span class="ph" style="width: 56px; height: 56px; border-radius: 50%; background: #D9CFF2; border-color: #4B3A7A">Чат</span></div>
+<p class="note" style="margin: 0">Фіксована знизу праворуч, над банером cookie, 56 px. Натискання відкриває нижню панель:</p>
+<div class="ph" style="flex-direction: column; gap: 10px; align-items: stretch; padding: 16px; border-radius: 20px 20px 0 0; background: #FFFFFF">
+<div class="ph" style="height: 6px; width: 40px; align-self: center; padding: 0; border-radius: 3px"></div>
+<strong>Напишіть мені</strong>
+<div class="btn" style="min-height: 48px">Instagram</div>
+<div class="btn" style="min-height: 48px">Messenger</div>
+<div class="btn" style="min-height: 48px; background: transparent">Записатися на сесію</div>
+</div>
+<p class="note" style="margin: 0">Закривається свайпом вниз, дотиком до фону або видимою кнопкою закриття.</p>
+</div>
+</div>
+
+<div class="sec">
+<span class="tag">09 Контакти</span>
+<div class="card"><div class="ln" style="width: 70%"></div><div class="ln" style="width: 55%"></div><div class="ln" style="width: 65%"></div><div class="ln" style="width: 50%"></div></div></div>
+
+<div class="sec" style="background: #E6E3EE">
+<span class="tag">10 Підвал сайту</span>
+<div style="display: flex; gap: 12px"><div class="ph" style="width: 48px; height: 48px; border-radius: 50%">IG</div><div class="ph" style="width: 48px; height: 48px; border-radius: 50%">TG</div><div class="ph" style="width: 48px; height: 48px; border-radius: 50%">FB</div><div class="ph" style="width: 48px; height: 48px; border-radius: 50%">LI</div></div>
+<div class="ln" style="width: 60%"></div><div class="ln" style="width: 45%"></div>
+<span class="note">© [Рік] [Ім'я]. Політика конфіденційності. Налаштування cookie.</span>
+</div>
+
+<p class="note" style="margin: 0; padding: 12px 16px; background: #FBF1B8">Банер cookie: нижня панель при першому візиті, дві кнопки («Прийняти», «Налаштування»).</p>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":5600}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

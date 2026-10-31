@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Стани форми запису</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&amp;family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fs *{box-sizing:border-box}
+.fs h2,.fs h3,.fs p{margin:0}
+.st{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.lbl{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#4B3A7A}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label,.fld .l{font-weight:700;font-size:15px}
+.in{min-height:52px;border:1.5px solid #8C82A6;border-radius:16px;background:#FFFFFF;padding:12px 16px;font:inherit;font-size:16px;color:#2E2542;width:100%}
+.in::placeholder{color:#6E6486}
+.hint{font-size:14px;color:#50466A}
+.err{font-size:14px;font-weight:600;color:#B3261E;display:flex;gap:6px;align-items:flex-start}
+.seg{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.seg span{min-height:48px;border-radius:999px;border:1.5px solid #8C82A6;background:#FFFFFF;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.seg span.on{background:#D9CFF2;border-color:#4B3A7A}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:14px}
+.box{width:24px;height:24px;border:1.5px solid #4B3A7A;border-radius:7px;flex:none;background:#FFFFFF;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.btn{min-height:52px;padding:10px 26px;border-radius:999px;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;border:1.5px solid #4B3A7A;font-family:inherit;background:#FBF1B8;color:#2E2542;width:100%}
+.btn.off{background:#E6E3EE;color:#6E6486;border-color:#B9B2CC}
+.btn.line{background:transparent;color:#4B3A7A}
+</style>
+</helmet>
+<div class="fs" style="width: 1200px; height: 1560px; padding: 64px; background: #EFE9FB; color: #2E2542; font-family: 'Nunito', system-ui, sans-serif; line-height: 1.5; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p class="lbl">Форма запису</p>
+<h2 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 44px; line-height: 1.15">Усі стани форми</h2>
+<p style="font-size: 17px; color: #50466A; max-width: 760px">Показано скорочену форму (ім'я, спосіб зв'язку, згода). Повні поля дивіться в макетах. Помилки передаються не лише кольором: є іконка й текст, а поле отримує товстішу рамку.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+
+<div class="st">
+<p class="lbl">1 · Порожня</p>
+<div class="fld"><label for="s1n">Ім'я</label><input class="in" id="s1n" type="text" placeholder="Наприклад, Анна"></div>
+<div class="fld"><span class="l">Як з вами зв'язатися?</span><div class="seg"><span class="on">Телефон</span><span>Email</span><span>Instagram</span><span>Messenger</span></div></div>
+<div class="fld"><label for="s1p">Ваш номер телефону</label><input class="in" id="s1p" type="tel" placeholder="+380 ..."></div>
+<div class="check"><span class="box"></span><span>Я погоджуюся на обробку персональних даних</span></div>
+<div class="btn">Надіслати запит</div>
+</div>
+
+<div class="st">
+<p class="lbl">2 · Фокус і заповнення</p>
+<div class="fld"><label for="s2n">Ім'я</label><input class="in" id="s2n" type="text" value="Анна"></div>
+<div class="fld"><span class="l">Як з вами зв'язатися?</span><div class="seg"><span class="on">Телефон</span><span>Email</span><span>Instagram</span><span>Messenger</span></div></div>
+<div class="fld"><label for="s2p">Ваш номер телефону</label><input class="in" id="s2p" type="tel" value="+380 50 123 45 67" style="border: 2.5px solid #4B3A7A; outline: 4px solid #D9CFF2"><span class="hint">Активне поле: товста фіолетова рамка та світлий ореол</span></div>
+<div class="check"><span class="box"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B3A7A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span>Я погоджуюся на обробку персональних даних</span></div>
+<div class="btn">Надіслати запит</div>
+</div>
+
+<div class="st">
+<p class="lbl">3 · Помилки перевірки</p>
+<div class="fld"><label for="s3n">Ім'я</label><input class="in" id="s3n" type="text" placeholder="Наприклад, Анна" style="border: 2.5px solid #B3261E"><span class="err"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.500v.5"></path></svg>Вкажіть, як до вас звертатися</span></div>
+<div class="fld"><span class="l">Як з вами зв'язатися?</span><div class="seg"><span class="on">Телефон</span><span>Email</span><span>Instagram</span><span>Messenger</span></div></div>
+<div class="fld"><label for="s3p">Ваш номер телефону</label><input class="in" id="s3p" type="tel" value="+380 50 12" style="border: 2.5px solid #B3261E"><span class="err"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.500v.5"></path></svg>Номер надто короткий. Приклад: +380 50 123 45 67</span></div>
+<div class="fld"><div class="check"><span class="box" style="border: 2.5px solid #B3261E"></span><span>Я погоджуюся на обробку персональних даних</span></div><span class="err"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.500v.5"></path></svg>Підтвердіть згоду, щоб надіслати запит</span></div>
+<div class="btn">Надіслати запит</div>
+<p class="hint">Після натискання фокус переходить на перше поле з помилкою, а над формою зачитується підсумок помилок.</p>
+</div>
+
+<div class="st">
+<p class="lbl">4 · Надсилання</p>
+<div class="fld"><label for="s4n">Ім'я</label><input class="in" id="s4n" type="text" value="Анна" disabled style="background: #F3F1F8; color: #6E6486; border-color: #B9B2CC"></div>
+<div class="fld"><span class="l">Як з вами зв'язатися?</span><div class="seg" style="opacity: 0.6"><span class="on">Телефон</span><span>Email</span><span>Instagram</span><span>Messenger</span></div></div>
+<div class="fld"><label for="s4p">Ваш номер телефону</label><input class="in" id="s4p" type="tel" value="+380 50 123 45 67" disabled style="background: #F3F1F8; color: #6E6486; border-color: #B9B2CC"></div>
+<div class="check" style="opacity: 0.6"><span class="box"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B3A7A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span>Я погоджуюся на обробку персональних даних</span></div>
+<div class="btn off"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E6486" stroke-width="2.500" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Надсилаємо…</div>
+<p class="hint">Поля та кнопка заблоковані, щоб уникнути повторного надсилання. Статус оголошується читачам екрана.</p>
+</div>
+
+<div class="st" style="background: #FBF1B8; border-color: #E7D77C; align-items: flex-start; gap: 18px">
+<p class="lbl">5 · Успіх</p>
+<span style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #4B3A7A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4B3A7A" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span>
+<h3 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 28px; line-height: 1.2">Дякую, Анно! Заявку отримано</h3>
+<p style="font-size: 17px">Я зв'яжуся з вами за номером +380 50 123 45 67 протягом [X] годин, щоб узгодити зручний час.</p>
+<div class="btn" style="background: #FFFFFF">Повернутися на сайт</div>
+<div class="btn line">Надіслати ще одну заявку</div>
+</div>
+
+<div class="st" style="border: 2px solid #B3261E">
+<p class="lbl">6 · Збій надсилання</p>
+<div style="background: #FDECEA; border-radius: 16px; padding: 16px; display: flex; gap: 12px; align-items: flex-start"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M12 3l10 18H2z"></path><path d="M12 10v4.500M12 17.500v.5"></path></svg><div><p style="font-weight: 700; color: #7A1712">Не вдалося надіслати запит</p><p style="font-size: 15px; margin-top: 4px">Перевірте з'єднання й спробуйте ще раз. Ваші дані збережено у формі.</p></div></div>
+<div class="btn">Спробувати ще раз</div>
+<p class="hint" style="text-align: center">Або напишіть мені напряму:</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px"><div class="btn line" style="padding: 10px 8px">Instagram</div><div class="btn line" style="padding: 10px 8px">Messenger</div></div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":1560}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

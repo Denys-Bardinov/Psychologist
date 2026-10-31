@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Клікабельний прототип</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&amp;family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.pt *{box-sizing:border-box}
+.pt h1,.pt h2,.pt h3,.pt p{margin:0}
+.pt button{font-family:inherit;cursor:pointer}
+.pt a{color:#4B3A7A;text-decoration:none}
+.hd{position:sticky;top:0;z-index:3;height:64px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;background:#FFFFFF;border-bottom:1px solid #E2DBF0}
+.logo{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:600}
+.round{width:48px;height:48px;border-radius:50%;border:1.5px solid #8C82A6;background:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.pill{min-height:48px;min-width:56px;padding:0 14px;border-radius:999px;background:#EFE9FB;border:0;font-weight:700;font-size:15px;color:#2E2542}
+.btn{min-height:48px;padding:10px 24px;border-radius:999px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;justify-content:center;text-align:center;border:1.5px solid #4B3A7A;color:#2E2542;background:#FBF1B8;line-height:1.25}
+.btn.alt{background:#D9CFF2}
+.btn.line{background:transparent;color:#4B3A7A}
+.sec{padding:40px 16px;display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#4B3A7A}
+.h1{font-family:'Lora',Georgia,serif;font-weight:500;font-size:34px;line-height:1.2}
+.h2{font-family:'Lora',Georgia,serif;font-weight:500;font-size:27px;line-height:1.2}
+.muted{color:#50466A}
+.card{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:10px}
+details{background:#FFFFFF;border:1px solid #E2DBF0;border-radius:18px;padding:0 18px}
+summary{list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;color:#4B3A7A;flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 16px;color:#50466A;font-size:15px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label,.fld .l{font-weight:700;font-size:15px}
+.in{min-height:52px;border:1.5px solid #8C82A6;border-radius:16px;background:#FFFFFF;padding:12px 16px;font:inherit;font-size:16px;color:#2E2542;width:100%}
+.in:focus{outline:4px solid #D9CFF2;border:2.5px solid #4B3A7A}
+.in::placeholder{color:#6E6486}
+.hint{font-size:13px;color:#50466A}
+.err{font-size:14px;font-weight:600;color:#B3261E}
+.seg{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.seg button{min-height:48px;border-radius:999px;font-weight:700;font-size:15px;color:#2E2542}
+.chk{display:flex;gap:12px;align-items:flex-start;font-size:14px}
+.chk input{width:24px;height:24px;accent-color:#4B3A7A;flex:none;margin:0}
+.msg{min-height:60px;border-radius:20px;background:#FFFFFF;border:1.5px solid #4B3A7A;padding:0 18px;display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:17px;color:#2E2542}
+.ov{position:absolute;inset:0;z-index:10}
+.back{position:absolute;inset:0;border:0;background:rgba(46,37,66,0.55);padding:0}
+.mrow{min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E2DBF0;font-weight:700;font-size:19px;color:#2E2542}
+.lrow{width:100%;min-height:48px;padding:0 14px;border:0;border-radius:12px;background:transparent;text-align:left;font-weight:600;font-size:16px;color:#2E2542;display:flex;align-items:center;justify-content:space-between}
+</style>
+</helmet>
+<div class="pt" style="position: relative; width: 375px; height: 812px; overflow: hidden; background: #FCFAFF; color: #2E2542; font-family: 'Nunito', system-ui, sans-serif; font-size: 16px; line-height: 1.55">
+
+<div id="scroller" style="position: absolute; inset: 0; overflow-y: auto">
+
+<header class="hd">
+<span class="logo">[Ім'я Прізвище]</span>
+<div style="display: flex; gap: 8px; align-items: center">
+<button class="pill" type="button" onClick="{{ toggleLang }}" aria-label="Мова сайту">{{ langCode }} ▾</button>
+<button class="round" type="button" onClick="{{ openMenu }}" aria-label="Відкрити меню"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</div>
+</header>
+
+<section class="sec" style="background: #EFE9FB; padding-top: 32px">
+<p class="eyebrow">Психолог · [місто] · онлайн та офлайн</p>
+<h1 class="h1">Зробіть вдих. <em>Ви в правильному місці.</em></h1>
+<p class="muted">Індивідуальні сесії для тих, хто втомився, розгубився або просто хоче бути почутим. Без осуду, у вашому темпі.</p>
+<a class="btn" href="#booking">Записатися на сесію</a>
+<div style="height: 220px; border-radius: 110px 110px 24px 24px; background: #D9CFF2; display: flex; align-items: flex-end; justify-content: center; padding: 20px; font-size: 14px">[Портретне фото психолога]</div>
+</section>
+
+<section class="sec">
+<p class="eyebrow">Послуги</p>
+<h2 class="h2">Послуги та ціни</h2>
+<div class="card"><h3 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 20px">Індивідуальна сесія</h3><p class="muted" style="font-size: 15px">[Короткий опис.]</p><p style="font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600">[Ціна] грн <span style="font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 500; color: #50466A">/ [50] хв</span></p><a class="btn alt" href="#booking">Записатися</a></div>
+<div class="card"><h3 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 20px">Сесія для пар</h3><p class="muted" style="font-size: 15px">[Короткий опис.]</p><p style="font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600">[Ціна] грн <span style="font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 500; color: #50466A">/ [80] хв</span></p><a class="btn alt" href="#booking">Записатися</a></div>
+</section>
+
+<section class="sec" style="background: #EFE9FB">
+<p class="eyebrow">Часті питання</p>
+<h2 class="h2">Відповіді на питання</h2>
+<details open><summary>Як проходить перша сесія?</summary><p>[Коротка відповідь на 2–3 речення.]</p></details>
+<details><summary>Скільки триває одна сесія?</summary><p>[Відповідь.]</p></details>
+<details><summary>Чи можна проводити сесії онлайн?</summary><p>[Відповідь.]</p></details>
+</section>
+
+<section class="sec" id="booking">
+<p class="eyebrow">Запис</p>
+<h2 class="h2">Запис на консультацію</h2>
+
+<sc-if value="{{ isIdle }}" hint-placeholder-val="{{ true }}">
+<div class="card" style="padding: 22px; gap: 16px">
+<div class="fld"><label for="p-name">Ім'я</label><input class="in" id="p-name" type="text" placeholder="Наприклад, Анна" value="{{ name }}" onChange="{{ onName }}" style="{{ nameStyle }}">
+<sc-if value="{{ nameErr }}" hint-placeholder-val="{{ false }}"><span class="err">⚠ Вкажіть, як до вас звертатися</span></sc-if></div>
+<div class="fld"><span class="l">Як з вами зв'язатися?</span>
+<div class="seg"><sc-for list="{{ methods }}" as="m" hint-placeholder-count="4"><button type="button" onClick="{{ m.pick }}" style="{{ m.style }}">{{ m.label }}</button></sc-for></div></div>
+<div class="fld"><label for="p-contact">{{ contactLabel }}</label><input class="in" id="p-contact" type="{{ contactType }}" placeholder="{{ contactPh }}" value="{{ contact }}" onChange="{{ onContact }}" style="{{ contactStyle }}">
+<sc-if value="{{ contactErr }}" hint-placeholder-val="{{ false }}"><span class="err">⚠ {{ contactErrText }}</span></sc-if></div>
+<div class="fld"><label class="chk" for="p-consent"><input id="p-consent" type="checkbox" checked="{{ consent }}" onChange="{{ onConsent }}"><span>Я погоджуюся на обробку персональних даних</span></label>
+<sc-if value="{{ consentErr }}" hint-placeholder-val="{{ false }}"><span class="err">⚠ Підтвердіть згоду, щоб надіслати запит</span></sc-if></div>
+<button class="btn" type="button" onClick="{{ submit }}" style="width: 100%">Надіслати запит</button>
+<p class="hint">Підказка для перегляду: введіть ім'я «збій», щоб побачити стан помилки надсилання.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSending }}" hint-placeholder-val="{{ false }}">
+<div class="card" style="align-items: center; text-align: center; padding: 40px 22px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4B3A7A" stroke-width="2.5" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>
+<p style="font-weight: 700; font-size: 18px" role="status">Надсилаємо…</p>
+<p class="muted" style="font-size: 15px">Це займе кілька секунд</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+<div class="card" style="background: #FBF1B8; border-color: #E7D77C; gap: 14px">
+<span style="width: 56px; height: 56px; border-radius: 50%; background: #FFFFFF; border: 2px solid #4B3A7A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B3A7A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span>
+<h3 style="font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 24px; line-height: 1.25" role="status">Дякую, {{ name }}! Заявку отримано</h3>
+<p>Я зв'яжуся з вами протягом [X] годин, щоб узгодити зручний час.</p>
+<button class="btn" type="button" onClick="{{ reset }}" style="background: #FFFFFF">Надіслати ще одну заявку</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isFail }}" hint-placeholder-val="{{ false }}">
+<div class="card" style="border: 2px solid #B3261E; gap: 14px">
+<div style="background: #FDECEA; border-radius: 14px; padding: 14px"><p style="font-weight: 700; color: #7A1712" role="alert">Не вдалося надіслати запит</p><p style="font-size: 15px; margin-top: 4px">Перевірте з'єднання й спробуйте ще раз. Ваші дані збережено у формі.</p></div>
+<button class="btn" type="button" onClick="{{ retry }}">Спробувати ще раз</button>
+<p class="hint" style="text-align: center">Або напишіть мені напряму:</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px"><a class="btn line" href="#msg">Instagram</a><a class="btn line" href="#msg">Messenger</a></div>
+</div>
+</sc-if>
+</section>
+
+<section class="sec" id="msg" style="background: #FBF1B8">
+<p class="eyebrow">Швидше написати?</p>
+<h2 class="h2">Напишіть мені в Instagram або Messenger</h2>
+<a class="msg" href="#msg"><span>Написати в Instagram</span><span aria-hidden="true">→</span></a>
+<a class="msg" href="#msg"><span>Написати в Messenger</span><span aria-hidden="true">→</span></a>
+</section>
+
+<footer style="background: #2E2542; color: #F2EEFB; padding: 32px 16px 120px; display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<span class="logo" style="color: #F2EEFB">[Ім'я Прізвище]</span>
+<span>© [Рік] [Ім'я Прізвище]. Усі права захищено.</span>
+<span style="text-decoration: underline">Політика конфіденційності · Налаштування cookie</span>
+</footer>
+
+</div>
+
+<button type="button" onClick="{{ openChat }}" aria-label="Написати мені" style="{{ fabStyle }}"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"></path></svg></button>
+
+<sc-if value="{{ cookie }}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; background: #FFFFFF; border-top: 1.5px solid #4B3A7A; border-radius: 20px 20px 0 0; padding: 18px 16px 20px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 17px">Ми використовуємо cookie</b>
+<p class="muted" style="font-size: 14px">Вони допомагають сайту працювати. <a href="#" style="text-decoration: underline">Докладніше</a></p>
+<button class="btn" type="button" onClick="{{ acceptCookie }}">Прийняти</button>
+<button class="btn line" type="button" onClick="{{ acceptCookie }}">Налаштування</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+<div class="ov" style="background: #FCFAFF">
+<div style="height: 64px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; background: #FFFFFF; border-bottom: 1px solid #E2DBF0"><span class="logo">[Ім'я Прізвище]</span><button class="round" type="button" onClick="{{ closeAll }}" aria-label="Закрити меню"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg></button></div>
+<div style="padding: 8px 20px; display: flex; flex-direction: column">
+<a class="mrow" href="#booking" onClick="{{ closeAll }}"><span>Послуги</span><span aria-hidden="true">→</span></a>
+<a class="mrow" href="#booking" onClick="{{ closeAll }}"><span>Питання</span><span aria-hidden="true">→</span></a>
+<a class="mrow" href="#booking" onClick="{{ closeAll }}"><span>Запис</span><span aria-hidden="true">→</span></a>
+<a class="mrow" href="#msg" onClick="{{ closeAll }}"><span>Контакти</span><span aria-hidden="true">→</span></a>
+<a class="btn" href="#booking" onClick="{{ closeAll }}" style="margin-top: 24px">Записатися на сесію</a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showLang }}" hint-placeholder-val="{{ false }}">
+<div class="ov"><button class="back" type="button" onClick="{{ closeAll }}" aria-label="Закрити" style="background: rgba(46,37,66,0.25)"></button>
+<div style="position: absolute; top: 60px; right: 12px; width: 240px; background: #FFFFFF; border: 1.5px solid #B9B2CC; border-radius: 20px; padding: 8px; box-shadow: 0 8px 24px rgba(46,37,66,0.2)">
+<sc-for list="{{ langs }}" as="l" hint-placeholder-count="4"><button class="lrow" type="button" onClick="{{ l.pick }}" style="{{ l.style }}"><span>{{ l.name }}</span><span aria-hidden="true">{{ l.mark }}</span></button></sc-for>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ showChat }}" hint-placeholder-val="{{ false }}">
+<div class="ov"><button class="back" type="button" onClick="{{ closeAll }}" aria-label="Закрити"></button>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 22px 22px 0 0; padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #B9B2CC"></span>
+<b style="font-size: 18px">Напишіть мені</b>
+<a class="btn alt" href="#msg" onClick="{{ closeAll }}">Instagram</a>
+<a class="btn alt" href="#msg" onClick="{{ closeAll }}">Messenger</a>
+<a class="btn line" href="#booking" onClick="{{ closeAll }}">Записатися на сесію</a>
+<button class="btn line" type="button" onClick="{{ closeAll }}" style="border-color: transparent">Закрити</button>
+</div></div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":812}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { menu: false, lang: false, chat: false, cookie: true, langCode: 'UA', method: 'phone', name: '', contact: '', consent: false, tried: false, status: 'idle' };
+}
+renderVals() {
+const s = this.state;
+const methodsDef = [['phone', 'Телефон'], ['email', 'Email'], ['instagram', 'Instagram'], ['messenger', 'Messenger']];
+const labels = { phone: 'Ваш номер телефону', email: 'Ваша електронна пошта', instagram: 'Ваш нікнейм в Instagram', messenger: "Ім'я або посилання в Messenger" };
+const phs = { phone: '+380 ...', email: 'you@example.com', instagram: '@username', messenger: "Ім'я або посилання на профіль" };
+const types = { phone: 'tel', email: 'email', instagram: 'text', messenger: 'text' };
+const errTexts = { phone: 'Номер надто короткий. Приклад: +380 50 123 45 67', email: 'Перевірте адресу пошти. Приклад: you@example.com', instagram: 'Вкажіть нікнейм, наприклад @username', messenger: "Вкажіть ім'я або посилання на профіль" };
+const c = s.contact.trim();
+let contactBad = false;
+if (s.method === 'phone') contactBad = c.replace(/\D/g, '').length < 9;
+else if (s.method === 'email') contactBad = !/.+@.+\..+/.test(c);
+else contactBad = c.length < 3;
+const nameBad = !s.name.trim();
+const consentBad = !s.consent;
+const errStyle = 'border: 2.5px solid #B3261E';
+const langDefs = [['UA', 'Українська'], ['RU', 'Русский'], ['EN', 'English']];
+const closeAll = () => this.setState({ menu: false, lang: false, chat: false });
+return {
+langCode: s.langCode,
+showMenu: s.menu, showLang: s.lang, showChat: s.chat, cookie: s.cookie,
+openMenu: () => this.setState({ menu: true }),
+toggleLang: () => this.setState({ lang: !s.lang }),
+openChat: () => this.setState({ chat: true }),
+closeAll,
+acceptCookie: () => this.setState({ cookie: false }),
+fabStyle: 'position: absolute; right: 14px; z-index: 5; width: 56px; height: 56px; border-radius: 50%; background: #D9CFF2; border: 2px solid #4B3A7A; display: flex; align-items: center; justify-content: center; cursor: pointer; bottom: ' + (s.cookie ? '196px' : '16px'),
+langs: langDefs.map(([code, name]) => ({ name, mark: s.langCode === code ? '✓' : '', style: s.langCode === code ? 'background: #EFE9FB; font-weight: 700' : '', pick: () => this.setState({ langCode: code, lang: false }) })),
+methods: methodsDef.map(([key, label]) => ({ label, style: s.method === key ? 'background: #D9CFF2; border: 1.5px solid #4B3A7A' : 'background: #FFFFFF; border: 1.5px solid #8C82A6', pick: () => this.setState({ method: key, contact: '' }) })),
+contactLabel: labels[s.method], contactPh: phs[s.method], contactType: types[s.method], contactErrText: errTexts[s.method],
+name: s.name, contact: s.contact, consent: s.consent,
+onName: (e) => this.setState({ name: e.target.value }),
+onContact: (e) => this.setState({ contact: e.target.value }),
+onConsent: (e) => this.setState({ consent: e.target.checked }),
+nameErr: s.tried && nameBad, contactErr: s.tried && contactBad, consentErr: s.tried && consentBad,
+nameStyle: s.tried && nameBad ? errStyle : '', contactStyle: s.tried && contactBad ? errStyle : '',
+isIdle: s.status === 'idle', isSending: s.status === 'sending', isSuccess: s.status === 'success', isFail: s.status === 'fail',
+submit: () => {
+if (nameBad || contactBad || consentBad) { this.setState({ tried: true }); return; }
+this.setState({ status: 'sending' });
+const fail = s.name.trim().toLowerCase() === 'збій';
+setTimeout(() => this.setState({ status: fail ? 'fail' : 'success' }), 1200);
+},
+retry: () => this.setState({ status: 'idle', name: 'Анна' }),
+reset: () => this.setState({ status: 'idle', name: '', contact: '', consent: false, tried: false })
+};
+}
+}
+</script>
+</body>
+</html>
