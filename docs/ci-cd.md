@@ -5,15 +5,15 @@ Two GitHub Actions workflows live in `.github/workflows/`.
 ## CI (`ci.yml`)
 Runs on every pull request into `main`, on every push to `main`, and by hand from the Actions tab.
 
-- If the app exists (`package.json` in the repo root): install with `npm ci`, then run the `lint`, `check` and `test` npm scripts when they exist, then build.
-- Before the app exists: it only builds the placeholder page, so design and docs pull requests are never blocked.
-- On pull requests the built site is uploaded as an artifact (`site-preview-pr-<number>`, kept 7 days). Open the run in the Actions tab and download it to look at the site before merging.
+- Sets up Java 21 and runs `mvn -B verify`: compiles the Spring Boot app, runs the tests and packages a runnable jar.
+- Builds the static placeholder page for GitHub Pages (see Deploy).
+- On pull requests the jar is uploaded as an artifact (`site-jar-pr-<number>`, kept 7 days). Download it from the run in the Actions tab and start it with `java -jar <file>.jar`, then open http://localhost:8080.
 
 ## Deploy (`deploy.yml`)
 Runs after every push (merge) to `main`, and by hand from the Actions tab. It builds the site into `dist/` and publishes it to GitHub Pages:
 https://denys-bardinov.github.io/psychologist/
 
-Until the Astro app is added, the published site is the "coming soon" page from `placeholder/`.
+The site is a Java (Spring Boot) server app, and GitHub Pages can only host static files. So Pages keeps showing the "coming soon" page from `placeholder/` until a server host is chosen (for example Render, Railway or a VPS); then this workflow is replaced by a deploy to that host.
 
 Both workflows use the same build script, `.github/scripts/build-site.sh`.
 
@@ -24,14 +24,5 @@ Both workflows use the same build script, `.github/scripts/build-site.sh`.
    - Require status checks to pass: **Check and build**.
    - Allow only squash merging (Settings → General → Pull Requests).
 
-## When the Astro app is added
-- Put `lint`, `check` (`astro check`) and `test` scripts in `package.json` if wanted; CI picks them up automatically.
-- The site is served from the `/psychologist/` sub-path. The deploy workflow passes `SITE_URL` and `BASE_PATH` as environment variables, so `astro.config.mjs` can use:
-  ```js
-  export default defineConfig({
-    site: process.env.SITE_URL,
-    base: process.env.BASE_PATH || '/',
-  });
-  ```
-- Delete the `placeholder/` folder once the real site is live.
-- With a custom domain later, the base path becomes `/` automatically.
+## Hosting the Java app (to do)
+Pick a host that runs Java 21 (Render, Railway, Fly.io, a VPS). The app reads the port from the `PORT` environment variable (default 8080). Then replace `deploy.yml` with a deploy to that host and delete `placeholder/`.

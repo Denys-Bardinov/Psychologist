@@ -1,0 +1,19 @@
+<section th:fragment="section" class="pad lemon">
+  <div class="wrap two">
+    <div class="stack" style="gap: 10px">
+      <p class="eyebrow" th:text="#{message.eyebrow}">Eyebrow</p>
+      <h2 th:text="#{message.title}">Title</h2>
+      <p class="muted" th:text="#{message.lead}">Lead</p>
+    </div>
+    <div class="stack" style="gap: 14px">
+      <a class="msgbtn" th:href="${site.instagram}" target="_blank" rel="noopener">
+        <span class="ic"><svg th:replace="~{fragments/icons :: instagram}"></svg></span>
+        <span th:text="#{message.instagram}">Instagram</span><span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="msgbtn" th:href="${site.messenger}" target="_blank" rel="noopener">
+        <span class="ic"><svg th:replace="~{fragments/icons :: messenger}"></svg></span>
+        <span th:text="#{message.messenger}">Messenger</span><span class="go" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

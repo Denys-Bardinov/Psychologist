@@ -1,0 +1,102 @@
+<section th:fragment="section" class="pad tint" id="booking">
+  <div class="wrap two top">
+    <div class="stack">
+      <p class="eyebrow" th:text="#{booking.eyebrow}">Eyebrow</p>
+      <h2 th:text="#{booking.title}">Title</h2>
+      <p class="muted" th:text="#{booking.lead}">Lead</p>
+      <div class="ph photo bg-1 booking-img" role="img" th:aria-label="#{booking.image}" th:text="#{booking.image}">Image</div>
+    </div>
+
+    <div class="card form-card">
+      <!-- The form. site.js checks the fields, sends JSON to /api/booking and switches between the states. -->
+      <form class="form stack" novalidate data-booking th:action="@{/api/booking}" method="post" th:attr="data-lang=${lang.path}">
+        <div class="summary-err" role="alert" tabindex="-1" data-error-summary hidden>
+          <span th:text="#{booking.errorSummary}">Fix:</span> <span data-error-list></span>
+        </div>
+
+        <div class="fields stack">
+          <div class="fld">
+            <label for="f-name" th:text="#{booking.name}">Name</label>
+            <input class="in" id="f-name" name="name" type="text" autocomplete="name" maxlength="100"
+                   th:placeholder="#{booking.namePh}" aria-describedby="f-name-err" required>
+            <span class="err" id="f-name-err" th:text="#{booking.nameErr}" hidden>Error</span>
+          </div>
+
+          <fieldset class="fld">
+            <legend th:text="#{booking.method}">How to contact</legend>
+            <div class="seg">
+              <label th:each="m, it : ${contactMethods}">
+                <input type="radio" name="method" th:value="${m}" th:checked="${it.first}"
+                       th:attr="data-field=#{'booking.method.' + ${m} + '.field'},
+                                data-ph=#{'booking.method.' + ${m} + '.ph'},
+                                data-err=#{'booking.method.' + ${m} + '.err'}">
+                <span th:text="#{'booking.method.' + ${m}}">Method</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="fld">
+            <label for="f-contact" th:text="#{booking.method.phone.field}" data-contact-label>Contact</label>
+            <input class="in" id="f-contact" name="contact" type="tel" autocomplete="tel" maxlength="200"
+                   th:placeholder="#{booking.method.phone.ph}" aria-describedby="f-contact-err" required>
+            <span class="err" id="f-contact-err" th:text="#{booking.method.phone.err}" hidden>Error</span>
+          </div>
+
+          <div class="fgrid">
+            <div class="fld">
+              <label for="f-type" th:text="#{booking.type}">Session type</label>
+              <select class="in" id="f-type" name="sessionType">
+                <option value="" th:text="#{booking.typeChoose}">Choose</option>
+                <option th:each="s : ${services}" th:value="${s.title}" th:text="${s.title}">Service</option>
+              </select>
+            </div>
+            <div class="fld">
+              <label for="f-time" th:text="#{booking.time}">Time</label>
+              <input class="in" id="f-time" name="preferredTime" type="text" maxlength="200" th:placeholder="#{booking.timePh}">
+            </div>
+          </div>
+
+          <div class="fld">
+            <label for="f-msg" th:text="#{booking.message}">Message</label>
+            <textarea class="in" id="f-msg" name="message" rows="3" maxlength="2000" th:placeholder="#{booking.messagePh}"></textarea>
+          </div>
+
+          <div class="fld">
+            <label class="check">
+              <input type="checkbox" name="consent" id="f-consent" aria-describedby="f-consent-err" required>
+              <span><span th:text="#{booking.consentStart}">I agree</span>
+                <a th:href="@{'/' + ${lang.path} + '/privacy/'}" target="_blank" th:text="#{booking.consentLink}">privacy policy</a></span>
+            </label>
+            <span class="err" id="f-consent-err" th:text="#{booking.consentErr}" hidden>Error</span>
+          </div>
+        </div>
+
+        <button class="btn main full" type="submit" data-submit>
+          <span data-submit-label th:text="#{booking.submit}">Send</span>
+          <span class="spinner" aria-hidden="true" hidden></span>
+          <span data-sending-label th:text="#{booking.sending}" hidden>Sending</span>
+        </button>
+        <p class="sr-only" role="status" aria-live="polite" data-live></p>
+      </form>
+
+      <div class="status" data-state="success" tabindex="-1" hidden>
+        <span class="icon bg-0"><svg th:replace="~{fragments/icons :: check}"></svg></span>
+        <h3 th:text="#{booking.successTitle}">Thanks</h3>
+        <p class="muted" th:text="#{booking.successText}">Text</p>
+        <button class="btn line" type="button" data-again th:text="#{booking.again}">Again</button>
+      </div>
+
+      <div class="status" data-state="fail" tabindex="-1" hidden>
+        <span class="icon bg-2"><svg th:replace="~{fragments/icons :: alert}"></svg></span>
+        <h3 th:text="#{booking.failTitle}">Failed</h3>
+        <p class="muted" th:text="#{booking.failText}">Text</p>
+        <button class="btn main" type="button" data-retry th:text="#{booking.retry}">Retry</button>
+        <p class="muted" th:text="#{booking.orDirect}">Or write:</p>
+        <div class="row">
+          <a class="btn line" th:href="${site.instagram}" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn line" th:href="${site.messenger}" target="_blank" rel="noopener">Messenger</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

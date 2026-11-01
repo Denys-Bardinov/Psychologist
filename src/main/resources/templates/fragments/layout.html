@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- <head> shared by all pages. title: page title. -->
+<head th:fragment="head(title)">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${title}">Title</title>
+  <meta name="description" th:content="#{meta.description}">
+  <link th:each="l : ${languages}" rel="alternate" th:hreflang="${l.path}" th:href="@{'/' + ${l.path} + '/' + ${subPath}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/site.css}">
+  <script th:src="@{/js/site.js}" defer></script>
+</head>
+
+<!-- Sticky header with navigation, language switcher, booking button and mobile menu. -->
+<div th:fragment="header" th:remove="tag">
+  <a class="skip" href="#main" th:text="#{skip}">Skip</a>
+  <header class="hdr">
+    <a class="logo" th:href="@{'/' + ${lang.path} + '/'}" th:text="#{site.name}">Name</a>
+    <nav class="nav" th:aria-label="#{nav.label}">
+      <a th:href="@{'/' + ${lang.path} + '/#about'}" th:text="#{nav.about}">About</a>
+      <a th:href="@{'/' + ${lang.path} + '/#services'}" th:text="#{nav.services}">Services</a>
+      <a th:href="@{'/' + ${lang.path} + '/#portfolio'}" th:text="#{nav.portfolio}">Portfolio</a>
+      <a th:href="@{'/' + ${lang.path} + '/#reviews'}" th:text="#{nav.reviews}">Reviews</a>
+      <a th:href="@{'/' + ${lang.path} + '/#faq'}" th:text="#{nav.faq}">FAQ</a>
+      <a th:href="@{'/' + ${lang.path} + '/#contacts'}" th:text="#{nav.contacts}">Contacts</a>
+    </nav>
+    <div class="hr">
+      <div class="langwrap" data-lang-switcher>
+        <button class="lang" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langlist"
+                th:aria-label="#{nav.langLabel} + ': ' + ${lang.nativeName}">
+          <span th:text="${lang.code}">UA</span> <span aria-hidden="true">▾</span>
+        </button>
+        <ul class="langlist" id="langlist" hidden>
+          <li th:each="l : ${languages}">
+            <a th:href="@{'/' + ${l.path} + '/' + ${subPath}}" th:lang="${l.path}" th:attr="data-lang=${l.path}"
+               th:aria-current="${l == lang} ? 'true' : null">
+              <span th:text="${l.nativeName}">Name</span><span th:if="${l == lang}" aria-hidden="true">✓</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a class="btn main cta" th:href="@{'/' + ${lang.path} + '/#booking'}" th:text="#{nav.book}">Book</a>
+      <button class="menu" type="button" aria-controls="mmenu" aria-expanded="false" th:aria-label="#{nav.openMenu}" data-menu-open>
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="mmenu" id="mmenu" role="dialog" aria-modal="true" th:aria-label="#{nav.label}" hidden>
+    <div class="top">
+      <span class="logo" th:text="#{site.name}">Name</span>
+      <button class="menu" type="button" th:aria-label="#{nav.closeMenu}" data-menu-close>
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2542" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav>
+      <a th:href="@{'/' + ${lang.path} + '/#about'}"><span th:text="#{nav.about}">About</span><span aria-hidden="true">→</span></a>
+      <a th:href="@{'/' + ${lang.path} + '/#services'}"><span th:text="#{nav.services}">Services</span><span aria-hidden="true">→</span></a>
+      <a th:href="@{'/' + ${lang.path} + '/#portfolio'}"><span th:text="#{nav.portfolio}">Portfolio</span><span aria-hidden="true">→</span></a>
+      <a th:href="@{'/' + ${lang.path} + '/#reviews'}"><span th:text="#{nav.reviews}">Reviews</span><span aria-hidden="true">→</span></a>
+      <a th:href="@{'/' + ${lang.path} + '/#faq'}"><span th:text="#{nav.faq}">FAQ</span><span aria-hidden="true">→</span></a>
+      <a th:href="@{'/' + ${lang.path} + '/#contacts'}"><span th:text="#{nav.contacts}">Contacts</span><span aria-hidden="true">→</span></a>
+    </nav>
+    <a class="btn main full" th:href="@{'/' + ${lang.path} + '/#booking'}" th:text="#{hero.book}">Book</a>
+  </div>
+</div>
+
+<!-- Footer, floating chat button with bottom sheet, cookie banner. -->
+<div th:fragment="footer" th:remove="tag">
+  <footer class="ft">
+    <div class="stack" style="gap: 8px">
+      <div class="logo" th:text="#{site.name}">Name</div>
+      <p class="small">© <span th:text="${year}">2026</span> <span th:text="#{site.name}">Name</span>. <span th:text="#{footer.rights}">Rights</span></p>
+    </div>
+    <nav class="soc" th:aria-label="#{footer.social}">
+      <a th:href="${site.instagram}" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg th:replace="~{fragments/icons :: instagram}"></svg>
+      </a>
+      <a th:href="${site.telegram}" target="_blank" rel="noopener" aria-label="Telegram">
+        <svg th:replace="~{fragments/icons :: telegram}"></svg>
+      </a>
+      <a th:href="${site.facebook}" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg th:replace="~{fragments/icons :: facebook}"></svg>
+      </a>
+      <a th:href="${site.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg th:replace="~{fragments/icons :: linkedin}"></svg>
+      </a>
+    </nav>
+    <p class="small">
+      <a th:href="@{'/' + ${lang.path} + '/privacy/'}" th:text="#{footer.privacy}">Privacy</a> ·
+      <button class="linkbtn" type="button" data-cookie-settings th:text="#{footer.cookies}">Cookies</button>
+    </p>
+  </footer>
+
+  <button class="fab" type="button" th:aria-label="#{chat.open}" aria-haspopup="dialog" data-chat-open>
+    <svg th:replace="~{fragments/icons :: messenger}"></svg>
+  </button>
+  <dialog class="sheet" id="chat" aria-labelledby="chat-title">
+    <div class="inner">
+      <div class="bar">
+        <h3 id="chat-title" th:text="#{chat.title}">Message me</h3>
+        <button class="arrow" type="button" th:aria-label="#{chat.close}" data-dialog-close>✕</button>
+      </div>
+      <a class="msgbtn" th:href="${site.instagram}" target="_blank" rel="noopener"><span class="ic"><svg th:replace="~{fragments/icons :: instagram}"></svg></span><span th:text="#{message.instagram}">Instagram</span><span class="go" aria-hidden="true">→</span></a>
+      <a class="msgbtn" th:href="${site.messenger}" target="_blank" rel="noopener"><span class="ic"><svg th:replace="~{fragments/icons :: messenger}"></svg></span><span th:text="#{message.messenger}">Messenger</span><span class="go" aria-hidden="true">→</span></a>
+      <a class="msgbtn" th:href="${site.telegram}" target="_blank" rel="noopener"><span class="ic"><svg th:replace="~{fragments/icons :: telegram}"></svg></span><span th:text="#{chat.telegram}">Telegram</span><span class="go" aria-hidden="true">→</span></a>
+      <a class="btn main full" th:href="@{'/' + ${lang.path} + '/#booking'}" data-dialog-close th:text="#{chat.book}">Book</a>
+    </div>
+  </dialog>
+
+  <div class="cookie" role="region" th:aria-label="#{cookie.title}" data-cookie hidden>
+    <strong th:text="#{cookie.title}">Cookies</strong>
+    <p><span th:text="#{cookie.text}">Text</span> <a th:href="@{'/' + ${lang.path} + '/privacy/'}" th:text="#{cookie.more}">More</a></p>
+    <div class="row">
+      <button class="btn main" type="button" data-cookie-choice="all" th:text="#{cookie.accept}">Accept</button>
+      <button class="btn line" type="button" data-cookie-choice="necessary" th:text="#{cookie.decline}">Necessary only</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${lang.path}">
+<head th:replace="~{fragments/layout :: head(#{meta.title})}"></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main id="main">
+  <section th:replace="~{sections/hero :: section}"></section>
+  <section th:replace="~{sections/about :: section}"></section>
+  <section th:replace="~{sections/services :: section}"></section>
+  <section th:replace="~{sections/portfolio :: section}"></section>
+  <section th:replace="~{sections/reviews :: section}"></section>
+  <section th:replace="~{sections/faq :: section}"></section>
+  <section th:replace="~{sections/booking :: section}"></section>
+  <section th:replace="~{sections/message :: section}"></section>
+  <section th:replace="~{sections/contacts :: section}"></section>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

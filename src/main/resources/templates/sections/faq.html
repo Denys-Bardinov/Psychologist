@@ -1,0 +1,12 @@
+<section th:fragment="section" class="pad" id="faq">
+  <div class="wrap stack faq">
+    <div class="head" style="margin-bottom: 16px">
+      <p class="eyebrow" th:text="#{faq.eyebrow}">Eyebrow</p>
+      <h2 th:text="#{faq.title}">Title</h2>
+    </div>
+    <details th:each="q, it : ${faq}" th:open="${it.first}">
+      <summary th:text="${q.question}">Question</summary>
+      <p th:text="${q.answer}">Answer</p>
+    </details>
+  </div>
+</section>
