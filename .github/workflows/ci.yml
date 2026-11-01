@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Check and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Detect app
+        id: app
+        run: |
+          if [ -f package.json ]; then echo "exists=true" >> "$GITHUB_OUTPUT"; else echo "exists=false" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Set up Node
+        if: steps.app.outputs.exists == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.app.outputs.exists == 'true'
+        run: npm ci
+
+      - name: Lint
+        if: steps.app.outputs.exists == 'true'
+        run: npm run lint --if-present
+
+      - name: Type check
+        if: steps.app.outputs.exists == 'true'
+        run: npm run check --if-present
+
+      - name: Test
+        if: steps.app.outputs.exists == 'true'
+        run: npm test --if-present
+
+      - name: Build
+        run: .github/scripts/build-site.sh
+
+      - name: Upload preview build
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-preview-pr-${{ github.event.pull_request.number }}
+          path: dist
+          retention-days: 7
