@@ -11,7 +11,7 @@ Runs on every pull request into `main`, on every push to `main`, and by hand fro
 
 ## Deploy (`deploy.yml`)
 Runs after every push (merge) to `main`, and by hand from the Actions tab. It builds the site into `dist/` and publishes it to GitHub Pages:
-https://denys-bardinov.github.io/psychologist/
+https://denys-bardinov.github.io/Psychologist/
 
 The site is a Java (Spring Boot) server app, and GitHub Pages can only host static files. So Pages keeps showing the "coming soon" page from `placeholder/` until a server host is chosen (for example Render, Railway or a VPS); then this workflow is replaced by a deploy to that host.
 
