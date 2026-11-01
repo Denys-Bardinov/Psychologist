@@ -1,0 +1,20 @@
+<section th:fragment="section" class="pad tint" id="services">
+  <div class="wrap stack" style="gap: 32px">
+    <div class="head">
+      <p class="eyebrow" th:text="#{services.eyebrow}">Eyebrow</p>
+      <h2 th:text="#{services.title}">Title</h2>
+    </div>
+    <div class="grid3">
+      <article class="card" th:each="s, it : ${services}">
+        <span class="tile" th:classappend="'bg-' + ${it.index % 3}">
+          <svg th:replace="~{fragments/icons :: __${it.index % 3 == 0 ? 'person' : (it.index % 3 == 1 ? 'couple' : 'screen')}__}"></svg>
+        </span>
+        <h3 th:text="${s.title}">Service</h3>
+        <p class="muted" th:text="${s.text}">Text</p>
+        <p class="price"><span class="num" th:text="${s.price} + ' ' + #{services.currency}">Price</span>
+          <span th:text="'/ ' + ${s.duration} + ' ' + #{services.minutes}">/ 50 min</span></p>
+        <a class="btn alt" href="#booking" th:attr="data-service=${it.count}" th:text="#{services.book}">Book</a>
+      </article>
+    </div>
+  </div>
+</section>

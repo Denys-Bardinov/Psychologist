@@ -1,0 +1,20 @@
+<section th:fragment="section" class="pad tint hero">
+  <div class="wrap two">
+    <div class="stack">
+      <p class="eyebrow" th:text="#{hero.eyebrow}">Eyebrow</p>
+      <h1><span th:text="#{hero.titleStart}">Title</span> <em th:text="#{hero.titleAccent}">Accent</em></h1>
+      <p class="muted" th:text="#{hero.lead}">Lead</p>
+      <div class="row">
+        <a class="btn main" href="#booking" th:text="#{hero.book}">Book</a>
+        <a class="btn line" href="#about" th:text="#{hero.more}">More</a>
+      </div>
+      <div class="chips">
+        <span class="chip" th:text="#{hero.chip.1}">Chip</span>
+        <span class="chip" th:text="#{hero.chip.2}">Chip</span>
+        <span class="chip" th:text="#{hero.chip.3}">Chip</span>
+      </div>
+    </div>
+    <!-- Replace with <img> of the portrait (arch crop) when the photo arrives. -->
+    <div class="ph arch" role="img" th:aria-label="#{hero.photo}" th:text="#{hero.photo}">Photo</div>
+  </div>
+</section>

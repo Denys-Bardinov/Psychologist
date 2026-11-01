@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${lang.path}">
+<head th:replace="~{fragments/layout :: head(#{privacy.title} + ' — ' + #{site.name})}"></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<main id="main" class="pad">
+  <article class="wrap stack doc">
+    <h1 th:text="#{privacy.title}">Privacy</h1>
+    <p class="muted" th:each="key : ${paragraphs}" th:text="#{${key}}">Text</p>
+    <p><a class="btn line" th:href="@{'/' + ${lang.path} + '/'}" th:text="#{privacy.back}">Back</a></p>
+  </article>
+</main>
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

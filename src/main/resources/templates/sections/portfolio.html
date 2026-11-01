@@ -1,0 +1,41 @@
+<section th:fragment="section" class="pad" id="portfolio">
+  <div class="wrap stack" style="gap: 32px">
+    <div class="head">
+      <p class="eyebrow" th:text="#{portfolio.eyebrow}">Eyebrow</p>
+      <h2 th:text="#{portfolio.title}">Title</h2>
+    </div>
+    <ul class="grid4 plain">
+      <li th:each="w, it : ${portfolio}">
+        <button class="work" type="button" aria-haspopup="dialog" th:attr="data-work=${it.index}">
+          <span class="img" th:classappend="'bg-' + ${it.index % 4}" th:text="${w.image}">Image</span>
+          <span class="t"><span class="name" th:text="${w.title}">Title</span><span th:text="${w.category}">Category</span></span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <dialog class="modal" id="work-modal" aria-labelledby="work-title">
+    <div class="inner">
+      <div class="bar">
+        <div>
+          <h3 id="work-title" data-work-title></h3>
+          <p class="muted" data-work-category></p>
+        </div>
+        <button class="arrow" type="button" th:aria-label="#{portfolio.close}" data-dialog-close>✕</button>
+      </div>
+      <div class="img" data-work-image></div>
+      <p class="muted" data-work-text></p>
+      <div class="nav2">
+        <button class="arrow" type="button" th:aria-label="#{portfolio.prev}" data-work-step="-1">←</button>
+        <button class="arrow" type="button" th:aria-label="#{portfolio.next}" data-work-step="1">→</button>
+      </div>
+    </div>
+  </dialog>
+  <!-- Data for the modal, read by site.js -->
+  <template id="work-data">
+    <div th:each="w, it : ${portfolio}" th:attr="data-index=${it.index}">
+      <span class="title" th:text="${w.title}"></span><span class="category" th:text="${w.category}"></span>
+      <span class="text" th:text="${w.text}"></span><span class="image" th:text="${w.image}"></span>
+    </div>
+  </template>
+</section>

@@ -1,0 +1,16 @@
+<section th:fragment="section" class="pad" id="about">
+  <div class="wrap two">
+    <div class="ph photo" role="img" th:aria-label="#{about.photo}" th:text="#{about.photo}">Photo</div>
+    <div class="stack">
+      <p class="eyebrow" th:text="#{about.eyebrow}">Eyebrow</p>
+      <h2 th:text="#{about.title}">Title</h2>
+      <p class="muted" th:text="#{about.p1}">Text</p>
+      <p class="muted" th:text="#{about.p2}">Text</p>
+      <div class="chips">
+        <span class="chip bg-0" th:text="#{about.chip.1}">Chip</span>
+        <span class="chip bg-2" th:text="#{about.chip.2}">Chip</span>
+        <span class="chip" th:text="#{about.chip.3}">Chip</span>
+      </div>
+    </div>
+  </div>
+</section>

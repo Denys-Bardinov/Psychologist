@@ -1,0 +1,27 @@
+<section th:fragment="section" class="pad tint" id="reviews">
+  <div class="wrap stack" style="gap: 28px; align-items: center; text-align: center">
+    <div class="head">
+      <p class="eyebrow" th:text="#{reviews.eyebrow}">Eyebrow</p>
+      <h2 th:text="#{reviews.title}">Title</h2>
+    </div>
+    <div class="slider" data-slider aria-roledescription="carousel" th:aria-label="#{reviews.title}">
+      <div class="track">
+        <figure class="slide" th:each="r, it : ${reviews}" role="group" aria-roledescription="slide"
+                th:aria-label="${it.count} + ' / ' + ${it.size}" th:aria-hidden="${it.first} ? null : 'true'">
+          <div class="card">
+            <blockquote class="quote" th:text="'«' + ${r.text} + '»'">Quote</blockquote>
+            <figcaption style="font-weight: 700" th:text="${r.author}">Author</figcaption>
+          </div>
+        </figure>
+      </div>
+    </div>
+    <div class="row" style="align-items: center; justify-content: center; gap: 8px">
+      <button class="arrow" type="button" th:aria-label="#{reviews.prev}" data-slide-step="-1">←</button>
+      <div class="dots">
+        <button type="button" th:each="r, it : ${reviews}" th:attr="data-slide-to=${it.index}"
+                th:aria-label="#{reviews.goTo} + ' ' + ${it.count}" th:aria-current="${it.first} ? 'true' : null"></button>
+      </div>
+      <button class="arrow" type="button" th:aria-label="#{reviews.next}" data-slide-step="1">→</button>
+    </div>
+  </div>
+</section>

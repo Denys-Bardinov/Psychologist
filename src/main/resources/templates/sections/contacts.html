@@ -1,0 +1,20 @@
+<section th:fragment="section" class="pad" id="contacts">
+  <div class="wrap stack">
+    <p class="eyebrow" th:text="#{contacts.eyebrow}">Eyebrow</p>
+    <h2 th:text="#{contacts.title}">Title</h2>
+    <div class="contacts">
+      <div class="crow">
+        <span class="tile sm bg-1"><svg th:replace="~{fragments/icons :: phone}"></svg></span>
+        <p><span class="lbl" th:text="#{contacts.phone}">Phone</span><a th:href="${site.phoneHref}" th:text="${site.phone}">Phone</a></p>
+      </div>
+      <div class="crow">
+        <span class="tile sm bg-2"><svg th:replace="~{fragments/icons :: email}"></svg></span>
+        <p><span class="lbl" th:text="#{contacts.email}">Email</span><a th:href="${site.emailHref}" th:text="${site.email}">Email</a></p>
+      </div>
+      <div class="crow">
+        <span class="tile sm bg-3"><svg th:replace="~{fragments/icons :: clock}"></svg></span>
+        <p><span class="lbl" th:text="#{contacts.hoursLabel}">Hours</span><span th:text="#{contacts.hours}">Hours</span></p>
+      </div>
+    </div>
+  </div>
+</section>
