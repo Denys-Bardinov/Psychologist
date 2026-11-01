@@ -40,7 +40,7 @@ jobs:
 
       - name: Build
         env:
-          # Base URL and path of the Pages site, e.g. /psychologist; the app can read these in astro.config.
+          # Base URL and path of the Pages site, e.g. /Psychologist; the app can read these in astro.config.
           SITE_URL: ${{ steps.pages.outputs.origin }}
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: .github/scripts/build-site.sh

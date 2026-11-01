@@ -11,7 +11,7 @@ Runs on every pull request into `main`, on every push to `main`, and by hand fro
 
 ## Deploy (`deploy.yml`)
 Runs after every push (merge) to `main`, and by hand from the Actions tab. It builds the site into `dist/` and publishes it to GitHub Pages:
-https://denys-bardinov.github.io/psychologist/
+https://denys-bardinov.github.io/Psychologist/
 
 Until the Astro app is added, the published site is the "coming soon" page from `placeholder/`.
 
@@ -26,7 +26,7 @@ Both workflows use the same build script, `.github/scripts/build-site.sh`.
 
 ## When the Astro app is added
 - Put `lint`, `check` (`astro check`) and `test` scripts in `package.json` if wanted; CI picks them up automatically.
-- The site is served from the `/psychologist/` sub-path. The deploy workflow passes `SITE_URL` and `BASE_PATH` as environment variables, so `astro.config.mjs` can use:
+- The site is served from the `/Psychologist/` sub-path. The deploy workflow passes `SITE_URL` and `BASE_PATH` as environment variables, so `astro.config.mjs` can use:
   ```js
   export default defineConfig({
     site: process.env.SITE_URL,
