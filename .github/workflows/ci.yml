@@ -26,11 +26,11 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: 21
+          java-version: 25
           cache: maven
 
       - name: Compile, test and package the Java app
-        run: mvn -B verify
+        run: ./mvnw -B verify
 
       - name: Build static placeholder for GitHub Pages
         run: .github/scripts/build-site.sh
