@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Сайт психолога — скоро</title>
+  <meta name="description" content="Сайт психолога готується. Незабаром тут з'явиться інформація про консультації та запис.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Nunito:wght@400;600&display=swap&subset=cyrillic" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #2E2542;
+      --violet: #4B3A7A;
+      --lavender: #D9CFF2;
+      --lemon: #FBF1B8;
+      --apricot: #FFDCC7;
+      --mist: #FCFAFF;
+      --text-2: #50466A;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px 16px;
+      background:
+        radial-gradient(40rem 30rem at 15% 10%, var(--lavender) 0%, transparent 60%),
+        radial-gradient(36rem 28rem at 90% 85%, var(--lemon) 0%, transparent 60%),
+        radial-gradient(24rem 20rem at 85% 15%, var(--apricot) 0%, transparent 65%),
+        var(--mist);
+      color: var(--ink);
+      font-family: "Nunito", system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 640px;
+      text-align: center;
+      background: rgba(252, 250, 255, 0.72);
+      border-radius: 28px;
+      padding: 48px 32px;
+      box-shadow: 0 12px 40px rgba(46, 37, 66, 0.08);
+    }
+    h1 {
+      font-family: "Lora", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(34px, 6vw, 52px);
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+    h1 em { color: var(--violet); }
+    p { margin: 0 0 12px; color: var(--text-2); }
+    .other { margin-top: 28px; font-size: 15px; }
+    .other p { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Сайт <em>скоро</em> з'явиться</h1>
+    <p>Тут незабаром буде інформація про консультації психолога та онлайн-запис.</p>
+    <div class="other">
+      <p lang="ru">Сайт скоро появится.</p>
+      <p lang="en">The website is coming soon.</p>
+    </div>
+  </main>
+</body>
+</html>
