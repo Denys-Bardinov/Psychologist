@@ -6,15 +6,20 @@ Design: see design/HANDOFF.md and design/source/.
 Branching and pull request rules: see [CONTRIBUTING.md](CONTRIBUTING.md). CI/CD: see [docs/ci-cd.md](docs/ci-cd.md).
 
 ## Tech
-Java 21, Spring Boot 3, Thymeleaf templates, Maven. Plain CSS and a small plain JavaScript file for the interactive parts.
+Java 25, Spring Boot 3, Thymeleaf templates, Maven. Plain CSS and a small plain JavaScript file for the interactive parts.
 
 ## Run it locally
-Needs Java 21 and Maven.
+Needs only Java 25 (check with `java -version`). Maven is downloaded automatically by the Maven Wrapper on the first run.
 
+Windows (cmd or PowerShell):
 ```
-mvn spring-boot:run
+mvnw spring-boot:run
 ```
-Open http://localhost:8080 (redirects to `/uk/`; Russian is `/ru/`). Run the tests with `mvn verify`.
+macOS / Linux / Git Bash:
+```
+./mvnw spring-boot:run
+```
+Open http://localhost:8080 (redirects to `/uk/`; Russian is `/ru/`). Stop with Ctrl+C. Run the tests with `mvnw verify`.
 
 ## Where things are
 | What | Where |
