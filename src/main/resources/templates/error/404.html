@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title th:text="#{error.title}">Not found</title>
+  <link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+<main class="pad" style="min-height: 100vh; display: grid; place-items: center; text-align: center">
+  <div class="stack" style="align-items: center">
+    <h1 th:text="#{error.title}">Not found</h1>
+    <a class="btn main" th:href="@{/}" th:text="#{error.home}">Home</a>
+  </div>
+</main>
+</body>
+</html>
