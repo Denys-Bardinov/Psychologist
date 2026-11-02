@@ -35,6 +35,15 @@ Open http://localhost:8080 (redirects to `/uk/`; Russian is `/ru/`). Stop with C
 
 To add a service, portfolio work, review or FAQ item, add the next numbered keys (for example `services.4.title`, `services.4.text`, ...) to both messages files.
 
+## Claude files
+| What | Where |
+| --- | --- |
+| Project rules for Claude | `CLAUDE.md` |
+| Review skill for pull requests (`psychologist-site-review`) | `.claude/skills/` |
+| Hook that checks the Ukrainian and Russian message files have the same keys after an edit | `.claude/settings.json` and `.claude/hooks/check-message-keys.sh` |
+
+`.claude/settings.json` is shared, so the hook runs for everyone who opens the project in Claude Code. It only reads the two message files and needs bash (Git Bash on Windows).
+
 ## Open items
 - Real content: texts, photos, prices, contacts (everything in `[brackets]` is a placeholder).
 - Where booking requests go (email, Telegram bot, Google Sheet). For now `LoggingBookingNotifier` only writes them to the log.

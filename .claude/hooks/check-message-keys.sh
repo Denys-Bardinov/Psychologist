@@ -4,8 +4,11 @@
 set -u
 
 input=$(cat)
-case "$input" in
-  *messages_uk.properties*|*messages_ru.properties*) ;;
+# Only react when the edited file itself is one of the message files, not when
+# some other edit just mentions their names in its text.
+edited=$(printf '%s' "$input" | grep -o '"file_path"[[:space:]]*:[[:space:]]*"[^"]*"' | head -n 1)
+case "$edited" in
+  *messages_uk.properties\"|*messages_ru.properties\") ;;
   *) exit 0 ;;
 esac
 
@@ -32,6 +35,7 @@ if [ -n "$only_uk$only_ru" ]; then
     [ -n "$only_uk" ] && echo "Only in Ukrainian (add to messages_ru.properties):" && echo "$only_uk" | sed 's/^/  /'
     [ -n "$only_ru" ] && echo "Only in Russian (add to messages_uk.properties):" && echo "$only_ru" | sed 's/^/  /'
     echo "Add the missing keys to the other file in the same change."
+    echo "(If you are in the middle of adding a key to both files, finish the second file now; this message is only a reminder.)"
   } >&2
   exit 2
 fi
