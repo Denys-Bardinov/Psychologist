@@ -32,6 +32,7 @@ Do not create, edit, move or delete anything under `src/test/`, and do not add t
 | Design reference | `design/HANDOFF.md`, `design/source/` (exported canvas, read-only) |
 | CI/CD | `.github/workflows/`, `docs/ci-cd.md` |
 | Claude skills for this repo | `.claude/skills/<skill-name>/SKILL.md` (e.g. `psychologist-site-review` for PR reviews) |
+| Claude hooks | `.claude/settings.json` and `.claude/hooks/` (checks that uk and ru message keys match after an edit) |
 
 ## Rules for changes
 - **No hard-coded text in templates.** Every visible string is a message key, added to both `messages_uk.properties` and `messages_ru.properties` in the same change. Lists (services, portfolio, reviews, FAQ) use numbered keys like `services.4.title`; add the next number in both files.
