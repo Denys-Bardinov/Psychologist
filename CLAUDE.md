@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Guidance for Claude when working in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working in this repository.
 
 ## What this is
 A one-page landing site for a psychologist: hero, about, services and prices, portfolio, reviews, FAQ, booking form, social links, contacts. Ukrainian is the default language, Russian second, English may be added later.
@@ -13,6 +13,14 @@ The owner (Bardinov) knows Java well and nothing else in depth. Keep code simple
 - Run locally: `./mvnw spring-boot:run` (Windows: `mvnw spring-boot:run`), then open http://localhost:8080 (redirects to `/uk/`; Russian is `/ru/`).
 - Build and check: `./mvnw -B verify` (this is what CI runs; it must pass before a PR is merged).
 - The app reads the port from `PORT` (default 8080).
+- Needs JDK 25 with `JAVA_HOME` set; otherwise the wrapper stops with "JAVA_HOME is not defined correctly".
+- Run one test class (running tests is allowed, editing them is not): `./mvnw -B test -Dtest=SiteTests`.
+- CI also runs `.github/scripts/build-site.sh`, which builds the static placeholder for GitHub Pages.
+
+## Architecture (needs several files to see)
+- **The language comes from the URL, not the browser.** `web/PathLocaleResolver` (registered in `web/WebConfig`) takes the locale from the first path segment (`/uk/`, `/ru/`) and ignores `Accept-Language`. `web/PageController` sends `/` to the language in the `lang` cookie (set by `site.js`), or Ukrainian by default. An unknown language gives a 404. `spring.messages.fallback-to-system-locale=false` and the empty `messages.properties` are what make Ukrainian the default.
+- **Repeating blocks are read from the messages files.** `content/PageContent` reads `services.N.*`, `portfolio.N.*`, `reviews.N.*` and `faq.N.*`, counting from 1. A block ends at the first number whose first field is missing (`title` for services and portfolio, `text` for reviews, `q` for FAQ), so a gap in the numbering silently hides every item after it.
+- **The booking form is a JSON API, not a Thymeleaf form post.** The form in `sections/booking.html` has `th:action="@{/api/booking}"`, and `site.js` validates it on the page, then sends the fields as JSON with `fetch`. `booking/BookingController` validates again with `@Valid`. A bad request gives 400 with `{"ok": false, "errors": {"name" | "contact" | "consent": <code>}}` (codes, not texts), but `site.js` does not read them: any non-OK response just shows the generic "fail" state with a retry button. Field values like `phone` arrive in lower case, which is why `spring.jackson.mapper.accept-case-insensitive-enums=true` is set.
 
 ## Tests: do not touch
 Do not create, edit, move or delete anything under `src/test/`, and do not add test dependencies to `pom.xml`. Regression testing will be a separate framework (Java + Selenium, Page Object Model), built and owned separately. If a change breaks an existing test, stop and report it instead of changing the test.
@@ -55,3 +63,6 @@ Do not create, edit, move or delete anything under `src/test/`, and do not add t
 ## Hosting gotchas
 - GitHub Pages cannot run the Java app. `deploy.yml` publishes only the "coming soon" page from `placeholder/` to https://denys-bardinov.github.io/Psychologist/ (capital P, the URL is case-sensitive).
 - A real server host (Render, Railway, Fly.io, a VPS) is still to be chosen; until then do not remove `placeholder/` or the Pages workflow.
+
+## Line endings gotcha
+`.gitattributes` forces `*.cmd` files to CRLF. Because of that, `mvnw.cmd` often shows as modified on Windows, and an IDE "commit all" rewrites all its lines. Do not stage `mvnw.cmd` unless you really edited it; stage files by name.
