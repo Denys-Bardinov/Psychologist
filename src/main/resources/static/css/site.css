@@ -18,6 +18,9 @@
   --footer-text: #F2EEFB;
   --font-head: 'Lora', Georgia, serif;
   --font-body: 'Nunito', system-ui, sans-serif;
+
+  --font-header: 'Manrope', system-ui, sans-serif;
+  --font-header-logo: 'Cormorant Garamond', Georgia, serif;
   --hdr-h: 64px;
   --ease: 200ms ease;
 }
@@ -333,8 +336,14 @@ body.has-cookie .fab { bottom: 196px; }
   body { font-size: 18px; }
   h1 { font-size: 56px; }
   h2 { font-size: 40px; }
-  .hdr { padding: 0 120px; }
+  .hdr { padding: 0 40px; } /* KAN-10: 120px side padding left too little room for logo + nav + button at 1100px; restored from 1280px */
   .nav { display: flex; }
+  /* KAN-10: header fonts, desktop only (the footer logo keeps Lora) */
+  .hdr .logo { font-family: var(--font-header-logo); font-size: 24px; font-weight: 700; flex: none; overflow: visible; } /* 24px at 1100-1279px so the full name fits; 28px from 1280px (Cormorant has a small x-height) */
+  .nav { font-family: var(--font-header); font-weight: 600; gap: 8px; }
+  /* KAN-10: nav links were 26px tall; 48px touch target. 8px side padding + 8px gap = the old 24px spacing */
+  .nav a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 8px; }
+  .hdr .cta { font-family: var(--font-header); font-weight: 700; }
   .menu { display: none; }
   .pad { padding: 104px 120px; }
   section.pad { --fade: 130px; }
@@ -342,6 +351,11 @@ body.has-cookie .fab { bottom: 196px; }
   .work .img { height: 180px; }
   .contacts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ft { padding: 48px 120px; }
+}
+
+@media (min-width: 1280px) {
+  .hdr { padding: 0 120px; }
+  .hdr .logo { font-size: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
