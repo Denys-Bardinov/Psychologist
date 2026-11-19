@@ -118,6 +118,25 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* Layout */
 .pad { padding: 56px 16px; }
 .tint { background: var(--section); }
+
+/* Section backgrounds: lavender field photo under a light tint, fading into the page colour at the top and bottom.
+   Photo: Pexels 1166209 (free licence), placeholder until the final photo is agreed. */
+section.pad {
+  --fade: 50px; --veil: rgba(252, 250, 255, .78);
+  background-image:
+    linear-gradient(to bottom, var(--mist) 0, rgba(252, 250, 255, 0) var(--fade), rgba(252, 250, 255, 0) calc(100% - var(--fade)), var(--mist) 100%),
+    linear-gradient(var(--veil), var(--veil)),
+    url("../img/lavender-field.jpg");
+  background-size: auto, auto, cover;
+  background-position: 0 0, 0 0, center bottom;
+  background-repeat: no-repeat;
+}
+section.pad.tint { --veil: rgba(239, 233, 251, .78); }
+section.pad.lemon { --veil: rgba(251, 241, 184, .78); }
+section.pad.hero { --veil: rgba(252, 250, 255, .72); }
+#portfolio { background-position: 0 0, 0 0, center top; }
+#faq { background-position: 0 0, 0 0, 20% 30%; }
+#contacts { background-position: 0 0, 0 0, 80% 60%; }
 .wrap { max-width: 1200px; margin: 0 auto; }
 .eyebrow { font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--violet); }
 .stack { display: flex; flex-direction: column; gap: 20px; }
@@ -295,6 +314,7 @@ body.has-cookie .fab { bottom: 196px; }
   .hdr { padding: 0 40px; }
   .cta { display: inline-flex; }
   .pad { padding: 80px 40px; }
+  section.pad { --fade: 90px; }
   .two { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; }
   .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -317,6 +337,7 @@ body.has-cookie .fab { bottom: 196px; }
   .nav { display: flex; }
   .menu { display: none; }
   .pad { padding: 104px 120px; }
+  section.pad { --fade: 130px; }
   .grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
   .work .img { height: 180px; }
   .contacts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
